@@ -6,115 +6,52 @@
     <title>Green Fashion | Polos Oversize Personalizados</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --verde-principal: #2E7D32;
-            --verde-claro: #4CAF50;
-            --verde-oscuro: #1B5E20;
-            --texto-oscuro: #333333;
-            --texto-suave: #555555;
-            --blanco: #FFFFFF;
-            --fondo-gris: #F9F9F9;
-            --borde: #E0E0E0;
-        }
-
+        :root { --verde-principal: #2E7D32; --verde-claro: #4CAF50; --verde-oscuro: #1B5E20; --texto-oscuro: #333333; --texto-suave: #555555; --blanco: #FFFFFF; --fondo-gris: #F9F9F9; --borde: #E0E0E0; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { color: var(--texto-oscuro); background-color: var(--blanco); line-height: 1.6; }
         h1, h2, h3 { font-family: 'Lora', serif; color: var(--texto-oscuro); font-weight: 600; }
+        html { scroll-behavior: smooth; }
 
-        /* --- HEADER --- */
         header { background-color: var(--blanco); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--borde); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 24px; font-weight: bold; color: var(--texto-oscuro); text-decoration: none; font-family: 'Lora', serif; }
         nav { display: flex; align-items: center; gap: 25px; }
         nav a { text-decoration: none; color: var(--texto-oscuro); font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
         nav a:hover { color: var(--verde-principal); }
         .btn-cta-header { background-color: var(--verde-principal); color: var(--blanco); padding: 10px 20px; border-radius: 25px; font-weight: bold; }
-        .btn-cta-header:hover { background-color: var(--verde-oscuro); color: var(--blanco); }
 
-        /* --- HERO TEXTO --- */
         .hero-texto { text-align: center; max-width: 900px; margin: 60px auto 40px; padding: 0 20px; }
         .hero-texto h1 { font-size: 3rem; margin-bottom: 20px; }
         .hero-texto p { color: var(--texto-suave); font-size: 1.05rem; }
 
-        /* --- CATEGORÍAS (ARREGLO SIMÉTRICO) --- */
         .seccion-categorias { text-align: center; padding: 40px 20px; background-color: var(--blanco); }
         .seccion-categorias h2 { font-size: 2.2rem; margin-bottom: 15px; }
         .linea-separador { width: 50px; height: 2px; background-color: var(--texto-oscuro); margin: 0 auto 40px; }
         
-        /* Flexbox centrado para evitar espacios en blanco horribles */
-        .grid-categorias { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 25px; 
-            max-width: 1100px; 
-            margin: 0 auto; 
-        }
-        
-        .tarjeta-cat { 
-            width: 330px; /* Tamaño fijo para simetría perfecta */
-            background: var(--blanco); 
-            text-align: center; 
-            transition: 0.3s; 
-            cursor: pointer; 
-            border: 1px solid var(--borde);
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-        }
+        .grid-categorias { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; max-width: 1100px; margin: 0 auto; }
+        .tarjeta-cat { width: 330px; background: var(--blanco); text-align: center; transition: 0.3s; cursor: pointer; border: 1px solid var(--borde); text-decoration: none; display: flex; flex-direction: column; }
         .tarjeta-cat:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
         .tarjeta-cat img { width: 100%; height: 260px; object-fit: cover; border-bottom: 1px solid var(--borde); }
         .tarjeta-cat h3 { padding: 20px; font-size: 1.3rem; font-style: italic; font-weight: 400; color: var(--texto-oscuro); margin-top: auto;}
 
-        /* --- SECCIÓN PRENDAS PERSONALIZABLES --- */
         .prendas-personalizables { display: flex; align-items: center; justify-content: center; gap: 40px; background: linear-gradient(to right, #F5F7FA, #E8F0FE); padding: 60px 20px; margin-top: 60px; }
         .prendas-personalizables img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--blanco); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .prendas-texto { max-width: 500px; }
         .prendas-texto h2 { font-size: 2rem; margin-bottom: 10px; }
         .prendas-texto .linea { width: 40px; height: 2px; background: var(--texto-oscuro); margin-bottom: 15px; }
-        .prendas-texto p { color: var(--texto-suave); }
-
-        /* --- CÓMO SOLICITAR --- */
-        .como-solicitar { text-align: center; padding: 80px 20px; background: var(--fondo-gris); }
-        .como-solicitar h2 { font-size: 2.2rem; margin-bottom: 10px; }
-        .como-solicitar > p { color: var(--texto-suave); margin-bottom: 25px; }
-        .grid-pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
-        .paso { text-align: center; }
-        .paso-icono { font-size: 40px; color: #90CAF9; margin-bottom: 15px; }
-        .paso p { font-size: 1.05rem; color: var(--texto-suave); font-weight: 500; }
-
-        /* --- POR QUÉ NOSOTROS --- */
-        .porque-nosotros { padding: 80px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .porque-nosotros > h2 { font-size: 2.2rem; margin-bottom: 20px; }
-        .porque-nosotros > p { color: var(--texto-suave); margin-bottom: 50px; }
         
+        .como-solicitar { text-align: center; padding: 80px 20px; background: var(--fondo-gris); }
+        .grid-pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
+        .paso-icono { font-size: 40px; margin-bottom: 15px; }
+
+        .porque-nosotros { padding: 80px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
         .fila-porque { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; text-align: left; }
         .fila-porque.inversa { flex-direction: row-reverse; }
-        .fila-porque img { flex: 1; width: 100%; max-width: 400px; object-fit: cover; border-radius: 5px; }
+        .fila-porque img { flex: 1; width: 100%; max-width: 400px; border-radius: 5px; }
         .fila-texto { flex: 1; }
-        .fila-texto h3 { font-size: 1.8rem; margin-bottom: 15px; }
-        .fila-texto p { color: var(--texto-suave); font-size: 1.05rem; }
 
-        /* --- FOOTER --- */
-        .footer-barra-top { background-color: #000; color: #FFF; padding: 20px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; font-size: 0.95rem; font-weight: 500; }
-        .footer-barra-top span { display: flex; align-items: center; gap: 8px; }
-        .footer-principal { background-color: var(--fondo-gris); padding: 60px 40px 20px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
-        .footer-col h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--texto-oscuro); }
-        .footer-col p, .footer-col a { color: var(--texto-suave); text-decoration: none; display: block; margin-bottom: 12px; font-size: 0.95rem; }
-        .footer-col a:hover { color: var(--verde-principal); }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li::before { content: "• "; color: var(--verde-principal); font-weight: bold; }
-        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--borde); color: var(--texto-suave); font-size: 0.9rem; }
-        .iconos-pago { font-size: 24px; color: #777; letter-spacing: 10px; margin: 20px 0; }
-
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 15px; }
-            nav { flex-wrap: wrap; justify-content: center; }
-            .grid-pasos { grid-template-columns: 1fr 1fr; gap: 40px; }
-            .fila-porque, .fila-porque.inversa { flex-direction: column; text-align: center; }
-            .prendas-personalizables { flex-direction: column; text-align: center; }
-            .prendas-texto .linea { margin: 0 auto 15px; }
-        }
+        footer { background-color: var(--fondo-gris); padding: 40px 20px; text-align: center; border-top: 1px solid var(--borde);}
+        
+        @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } .grid-pasos { grid-template-columns: 1fr 1fr; } .fila-porque { flex-direction: column; text-align: center;} .prendas-personalizables { flex-direction: column; text-align: center;} }
     </style>
 </head>
 <body>
@@ -123,7 +60,7 @@
         <a href="index.html" class="logo">🌿 Green Fashion</a>
         <nav>
             <a href="index.html">Inicio</a>
-            <a href="#">Catálogo</a>
+            <a href="catalogo.html">Catálogo</a>
             <a href="#">Nosotros</a>
             <a href="personalizar.html" class="btn-cta-header">¿Qué te gustaría estampar?</a>
         </nav>
@@ -131,63 +68,49 @@
 
     <section class="hero-texto">
         <h1>Polos personalizados en Huancavelica, Perú</h1>
-        <p>Escoge entre una amplia colección de polos estampados con diseños para cada ocasión que puedes usar para regalar o para darte un gusto. Además realizamos estampados de polos personalizados con tu propio diseño por unidad, contamos con prendas oversize unisex. Nuestra técnica de estampado por sublimación garantiza alta calidad y durabilidad.</p>
+        <p>Escoge entre una amplia colección de polos estampados con diseños para cada ocasión. Además realizamos estampados de polos personalizados con tu propio diseño por unidad en prendas oversize.</p>
     </section>
 
     <section class="seccion-categorias">
         <h2>Categorías disponibles</h2>
         <div class="linea-separador"></div>
         
-        <!-- GRILLA SIMÉTRICA DE 5 CATEGORÍAS -->
         <div class="grid-categorias">
-            
-            <!-- Categoría 1 -->
-            <a href="detalle.html" class="tarjeta-cat">
+            <!-- LOS ENLACES AHORA APUNTAN A SECCIONES ESPECÍFICAS DEL CATÁLOGO -->
+            <a href="catalogo.html#peruanos" class="tarjeta-cat">
                 <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&q=80" alt="Diseños peruanos">
                 <h3>Polos con diseños peruanos</h3>
             </a>
-            
-            <!-- Categoría 2 -->
-            <a href="detalle.html" class="tarjeta-cat">
+            <a href="catalogo.html#cumpleanos" class="tarjeta-cat">
                 <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80" alt="Cumpleaños">
                 <h3>Polos para cumpleaños</h3>
             </a>
-            
-            <!-- Categoría 3 -->
-            <a href="detalle.html" class="tarjeta-cat">
+            <a href="catalogo.html#parejas" class="tarjeta-cat">
                 <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=400&q=80" alt="Parejas">
                 <h3>Polos para parejas</h3>
             </a>
-            
-            <!-- Categoría 4 (Lleva al diseñador) -->
             <a href="personalizar.html" class="tarjeta-cat">
                 <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80" alt="Personalizar">
-                <h3>Personalizar</h3>
+                <h3>Personalizar tu Polo</h3>
             </a>
-
-            <!-- Categoría 5 -->
-            <a href="detalle.html" class="tarjeta-cat">
+            <a href="catalogo.html#mas-disenos" class="tarjeta-cat">
                 <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&q=80" alt="Mas diseños">
                 <h3>Mas diseños</h3>
             </a>
-
         </div>
     </section>
 
-    <!-- (El resto del código del index se mantiene igual) -->
     <section class="prendas-personalizables">
         <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&q=80" alt="Prenda">
         <div class="prendas-texto">
             <h2>Prendas personalizables</h2>
             <div class="linea"></div>
-            <p>Encontraste el mejor lugar para estampar un polo personalizado. Estampa cualquier imagen, frase o diseño en nuestros polos oversize de máxima comodidad.</p>
+            <p>Encontraste el mejor lugar para estampar un polo personalizado. Estampa cualquier imagen, frase o diseño en nuestros polos oversize.</p>
         </div>
     </section>
 
     <section class="como-solicitar">
         <h2>¿Cómo solicitar un estampado personalizado?</h2>
-        <p>4 Simples pasos para solicitar un estampado de calidad</p>
-        <div class="linea-separador" style="margin: 0 auto;"></div>
         <div class="grid-pasos">
             <div class="paso"><div class="paso-icono">🖼️</div><p>Ten listo la imagen o diseño</p></div>
             <div class="paso"><div class="paso-icono">🛒</div><p>Realiza tu pedido por la web</p></div>
@@ -198,71 +121,17 @@
 
     <section class="porque-nosotros">
         <h2>¿Porqué realizar tu estampado con nosotros?</h2>
-        <p>Porque la calidad está garantizada. Con nosotros te llegará una prenda de un proceso con estándares de calidad, con lo último en tecnología de sublimación:</p>
         <div class="fila-porque">
             <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80" alt="Tecnología">
             <div class="fila-texto">
                 <h3>Sublimación de última generación</h3>
-                <p>Nuestra técnica te permite estampar imágenes sin límites de colores. Los diseños se fusionan con la tela, asegurando que nunca se cuarteen ni pierdan color con los lavados.</p>
-            </div>
-        </div>
-        <div class="fila-porque inversa">
-            <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&q=80" alt="Equipos">
-            <div class="fila-texto">
-                <h3>Estilo Oversize Moderno</h3>
-                <p>Usamos un corte holgado y juvenil en nuestras prendas, diseñado específicamente para brindar máxima comodidad y adaptarse a las tendencias actuales de la moda urbana.</p>
-            </div>
-        </div>
-        <div class="fila-porque">
-            <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80" alt="Insumos">
-            <div class="fila-texto">
-                <h3>Insumos de calidad</h3>
-                <p>Utilizamos tintas premium de altísima calidad para que tus diseños resalten con colores vivos y vibrantes, cuidando al mismo tiempo el tejido para una sensación suave al tacto.</p>
+                <p>Nuestra técnica te permite estampar imágenes sin límites de colores asegurando que nunca se cuarteen con los lavados.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-barra-top">
-            <span>👕 Desde una unidad</span>
-            <span>✨ 100% personalizado</span>
-            <span>📱 Atención rápida por WhatsApp</span>
-            <span>📍 Envíos en Huancavelica</span>
-        </div>
-        <div class="footer-principal">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Polos Personalizados</h3>
-                    <p>Vendemos polos estampados personalizados estilo oversize con calidad premium garantizada.</p>
-                    <p style="margin-top: 15px; font-size: 1.5rem;">📱 🌿</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Información</h3>
-                    <a href="#">Nosotros</a>
-                    <a href="#">Catálogo</a>
-                    <a href="#">Contáctenos</a>
-                </div>
-                <div class="footer-col">
-                    <h3>Categorías</h3>
-                    <ul>
-                        <li><a href="personalizar.html" style="display:inline;">Personalizar Polo</a></li>
-                        <li><a href="#">Polos Urbanos</a></li>
-                        <li><a href="#">Polos Temáticos</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Contáctanos</h3>
-                    <a href="https://wa.me/51927089187" target="_blank">📞 +51 927 089 187</a>
-                    <a href="mailto:ventas@greenfashion.pe">✉️ ventas@greenfashion.pe</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="iconos-pago">💳 💵 🏦</div>
-                <p>Términos y Condiciones &nbsp;|&nbsp; Políticas de Privacidad</p>
-                <p style="margin-top: 10px;">&copy; 2026 Green Fashion.</p>
-            </div>
-        </div>
+        <p>&copy; 2026 Green Fashion. Todos los derechos reservados.</p>
     </footer>
-
 </body>
 </html>
