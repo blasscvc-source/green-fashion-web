@@ -4,401 +4,252 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Fashion | Polos Oversize Personalizados</title>
+    <!-- Fuente elegante para los títulos similar a tu referencia -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --verde-principal: #2E7D32;
             --verde-claro: #4CAF50;
-            --blanco: #FFFFFF;
+            --verde-oscuro: #1B5E20;
             --texto-oscuro: #333333;
-            --fondo-claro: #FAFAFA;
-            --gris-borde: #DDDDDD;
-            --naranja-carrito: #FF9800;
+            --texto-suave: #555555;
+            --blanco: #FFFFFF;
+            --fondo-gris: #F9F9F9;
+            --borde: #E0E0E0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--fondo-claro); color: var(--texto-oscuro); line-height: 1.6; }
-        
-        header { background-color: var(--blanco); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 24px; font-weight: bold; color: var(--verde-principal); text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        nav { display: flex; align-items: center; }
-        nav a { margin-left: 20px; text-decoration: none; color: var(--texto-oscuro); font-weight: 600; transition: all 0.3s; }
+        body { color: var(--texto-oscuro); background-color: var(--blanco); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Lora', serif; color: var(--texto-oscuro); font-weight: 600; }
+
+        /* --- HEADER --- */
+        header { background-color: var(--blanco); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--borde); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--texto-oscuro); text-decoration: none; font-family: 'Lora', serif; }
+        nav { display: flex; align-items: center; gap: 25px; }
+        nav a { text-decoration: none; color: var(--texto-oscuro); font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
         nav a:hover { color: var(--verde-principal); }
+        .btn-cta-header { background-color: var(--verde-principal); color: var(--blanco); padding: 10px 20px; border-radius: 25px; font-weight: bold; }
+        .btn-cta-header:hover { background-color: var(--verde-oscuro); color: var(--blanco); }
+
+        /* --- HERO TEXTO --- */
+        .hero-texto { text-align: center; max-width: 900px; margin: 60px auto 40px; padding: 0 20px; }
+        .hero-texto h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero-texto p { color: var(--texto-suave); font-size: 1.05rem; }
+
+        /* --- CATEGORÍAS --- */
+        .seccion-categorias { text-align: center; padding: 40px 20px; background-color: var(--blanco); }
+        .seccion-categorias h2 { font-size: 2.2rem; margin-bottom: 15px; }
+        .linea-separador { width: 50px; height: 2px; background-color: var(--texto-oscuro); margin: 0 auto 40px; }
         
-        .producto-hero { display: flex; align-items: center; justify-content: center; padding: 40px 50px; background-color: var(--blanco); flex-wrap: wrap; gap: 30px; }
-        .producto-info { flex: 1; min-width: 300px; max-width: 550px; }
-        .producto-info h1 { font-size: 2.4rem; color: var(--texto-oscuro); margin-bottom: 15px; line-height: 1.2; }
-        .producto-info h1 span { color: var(--verde-principal); }
-        .producto-info p { font-size: 1rem; margin-bottom: 25px; color: #555; }
-        .btn-comprar { display: inline-block; background-color: var(--verde-principal); color: var(--blanco); padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 30px; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4); }
-        .btn-comprar:hover { transform: translateY(-3px); }
-        .producto-imagen { flex: 1; min-width: 300px; text-align: center; }
-        .producto-imagen img { width: 100%; max-width: 350px; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .grid-categorias { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        .tarjeta-cat { background: var(--fondo-gris); overflow: hidden; text-align: center; transition: 0.3s; cursor: pointer; border: 1px solid var(--borde); }
+        .tarjeta-cat:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .tarjeta-cat img { width: 100%; height: 250px; object-fit: cover; border-bottom: 1px solid var(--borde); }
+        .tarjeta-cat h3 { padding: 20px; font-size: 1.4rem; font-style: italic; font-weight: 400; color: #444; }
+
+        /* --- SECCIÓN PRENDAS PERSONALIZABLES --- */
+        .prendas-personalizables { display: flex; align-items: center; justify-content: center; gap: 40px; background: linear-gradient(to right, #F5F7FA, #E8F0FE); padding: 60px 20px; margin-top: 60px; }
+        .prendas-personalizables img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--blanco); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .prendas-texto { max-width: 500px; }
+        .prendas-texto h2 { font-size: 2rem; margin-bottom: 10px; }
+        .prendas-texto .linea { width: 40px; height: 2px; background: var(--texto-oscuro); margin-bottom: 15px; }
+        .prendas-texto p { color: var(--texto-suave); }
+
+        /* --- CÓMO SOLICITAR --- */
+        .como-solicitar { text-align: center; padding: 80px 20px; background: var(--fondo-gris); }
+        .como-solicitar h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .como-solicitar > p { color: var(--texto-suave); margin-bottom: 25px; }
+        .grid-pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
+        .paso { text-align: center; }
+        .paso-icono { font-size: 40px; color: #90CAF9; margin-bottom: 15px; }
+        .paso p { font-size: 1.05rem; color: var(--texto-suave); font-weight: 500; }
+
+        /* --- POR QUÉ NOSOTROS --- */
+        .porque-nosotros { padding: 80px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .porque-nosotros > h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .porque-nosotros > p { color: var(--texto-suave); margin-bottom: 50px; }
         
-        .nosotros { padding: 60px 20px; background-color: var(--fondo-claro); text-align: center; }
-        .nosotros-contenedor { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; }
-        .tarjeta-nosotros { flex: 1; min-width: 300px; background-color: var(--blanco); padding: 30px; border-radius: 15px; border-top: 5px solid var(--verde-principal); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .tarjeta-nosotros h3 { color: var(--verde-principal); margin-bottom: 15px; }
+        .fila-porque { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; text-align: left; }
+        .fila-porque.inversa { flex-direction: row-reverse; }
+        .fila-porque img { flex: 1; width: 100%; max-width: 400px; object-fit: cover; border-radius: 5px; }
+        .fila-texto { flex: 1; }
+        .fila-texto h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .fila-texto p { color: var(--texto-suave); font-size: 1.05rem; }
 
-        .personalizacion { padding: 60px 20px 20px; text-align: center; background-color: var(--blanco); }
-        .opciones-diseno { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
-        .opcion { background-color: var(--fondo-claro); padding: 12px 25px; border-radius: 30px; font-weight: bold; color: var(--verde-principal); border: 2px solid var(--verde-claro); cursor: pointer; transition: all 0.3s ease; }
-        .opcion:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2); }
-        .opcion.activa { background-color: var(--verde-principal); color: var(--blanco); transform: scale(1.05); }
-
-        #modulo-disenador { display: none; max-width: 1100px; margin: 20px auto 40px; text-align: left; animation: deslizarAbajo 0.5s ease forwards; }
-        @keyframes deslizarAbajo { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .disenador-layout { display: flex; flex-wrap: wrap; background: var(--blanco); box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; border: 1px solid var(--gris-borde); }
-
-        .zona-polo { flex: 1.2; min-width: 350px; padding: 30px; background-color: #FAFAFA; display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--gris-borde); }
-        .polo-mockup { position: relative; width: 100%; max-width: 400px; min-height: 400px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; display: flex; justify-content: center; align-items: center;}
+        /* --- FOOTER (NUEVO DISEÑO) --- */
+        .footer-barra-top { background-color: #000; color: #FFF; padding: 20px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; font-size: 0.95rem; font-weight: 500; }
+        .footer-barra-top span { display: flex; align-items: center; gap: 8px; }
         
-        .polo-mockup img.base { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .footer-principal { background-color: var(--fondo-gris); padding: 60px 40px 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
+        .footer-col h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--texto-oscuro); }
+        .footer-col p, .footer-col a { color: var(--texto-suave); text-decoration: none; display: block; margin-bottom: 12px; font-size: 0.95rem; }
+        .footer-col a:hover { color: var(--verde-principal); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li::before { content: "• "; color: var(--verde-principal); font-weight: bold; }
         
-        .area-impresion { position: absolute; top: 22%; left: 27%; width: 46%; height: 48%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; overflow: hidden; z-index: 10; }
-        .caja-textos { display: flex; flex-direction: column; justify-content: space-between; height: 100%; width: 100%; }
-        .linea-texto { font-size: 22px; font-weight: bold; color: #000; text-align: center; word-break: break-word; line-height: 1.1;}
-        
-        /* CORRECCIÓN: object-fit contain para que el diseño no desaparezca */
-        #imagen-polo { width: 100%; height: 100%; display: none; object-fit: contain; z-index: 10;}
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid var(--borde); color: var(--texto-suave); font-size: 0.9rem; }
+        .iconos-pago { font-size: 24px; color: #777; letter-spacing: 10px; margin: 20px 0; }
 
-        .selector-colores { margin-top: 25px; width: 100%; max-width: 400px; text-align: left;}
-        .selector-colores p { font-weight: bold; margin-bottom: 10px; font-size: 0.95rem; }
-        .grid-colores { display: flex; flex-wrap: wrap; gap: 10px; }
-        .btn-color { width: 35px; height: 35px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer; transition: transform 0.2s; }
-        .btn-color:hover { transform: scale(1.1); }
-        .btn-color.activo { border: 3px solid var(--texto-oscuro); box-shadow: 0 0 5px rgba(0,0,0,0.3); }
-
-        .zona-controles { flex: 1; min-width: 350px; background-color: var(--blanco); display: flex; flex-direction: column; }
-        .bloque-herramienta { display: none; padding: 30px 25px; border-bottom: 1px solid var(--gris-borde);}
-        .bloque-herramienta.activo { display: block; animation: aparecer 0.3s ease; }
-        @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
-        
-        .control-grupo { margin-bottom: 15px; text-align: left; }
-        .control-grupo label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; color: #444; }
-        .fila-input { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
-        .fila-input input[type="text"] { flex: 1; padding: 10px; border: 1px solid var(--gris-borde); border-radius: 5px; font-size: 0.95rem; }
-        select, input[type="number"] { padding: 10px; border: 1px solid var(--gris-borde); border-radius: 5px; font-size: 0.95rem; width: 100%;}
-        .selector-color-linea { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px dashed var(--gris-borde); padding-bottom: 10px;}
-        input[type="color"] { width: 45px; height: 35px; border: 1px solid #ccc; cursor: pointer; border-radius: 5px;}
-
-        .grid-galeria-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px;}
-        .item-galeria { border: 1px solid var(--gris-borde); border-radius: 5px; cursor: pointer; transition: 0.2s; padding: 5px; background: #fff;}
-        .item-galeria:hover { border-color: var(--verde-principal); transform: scale(1.05); }
-        .item-galeria img { width: 100%; height: 80px; object-fit: contain; }
-        .item-elemento { text-align: center; font-size: 35px; padding: 10px; border: 1px solid var(--gris-borde); border-radius: 5px; cursor: pointer; transition: 0.2s;}
-        .item-elemento:hover { border-color: var(--verde-principal); transform: scale(1.05); }
-
-        .zona-drop { border: 2px dashed #bbb; padding: 40px 20px; text-align: center; background: #eee; border-radius: 10px; cursor: pointer; margin-bottom: 15px; }
-        .btn-subir-propio { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; background-color: #E8F5E9; color: var(--verde-principal); border: 2px dashed var(--verde-principal); border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-bottom: 15px;}
-        .btn-subir-propio:hover { background-color: var(--verde-principal); color: var(--blanco); }
-
-        .zona-compra { padding: 25px; background: var(--fondo-claro); margin-top: auto; text-align: left;}
-        .tallas { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;}
-        .btn-talla { width: 40px; height: 40px; border: 1px solid var(--gris-borde); border-radius: 5px; background: var(--blanco); cursor: pointer; font-weight: bold; color: #555; transition: 0.2s; }
-        .btn-talla.activa { border: 2px solid var(--texto-oscuro); color: var(--texto-oscuro); }
-        .precio-final { font-size: 1.8rem; font-weight: bold; color: var(--texto-oscuro); text-align: right; margin-bottom: 15px; }
-        .btn-carrito { background: var(--naranja-carrito); color: white; padding: 12px; font-size: 1.1rem; font-weight: bold; border-radius: 5px; border: none; cursor: pointer; width: 100%; transition: 0.3s; }
-        .btn-carrito:hover { background: #E68A00; }
-
-        .footer-completo { background-color: var(--texto-oscuro); color: var(--blanco); padding: 60px 40px 20px; font-size: 0.95rem; }
-        .footer-columnas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .footer-col { flex: 1; min-width: 220px; }
-        .footer-logo { font-size: 24px; font-weight: bold; color: var(--verde-claro); text-decoration: none; display: block; margin-bottom: 20px; }
-        .footer-link { display: flex; align-items: center; gap: 8px; color: #BBB; text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
-        .footer-link:hover { color: var(--verde-claro); padding-left: 8px; }
-
-        .btn-flotante-wsp { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); text-decoration: none; z-index: 1000; transition: transform 0.3s; }
-        .btn-flotante-wsp:hover { transform: scale(1.1); }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            nav { flex-wrap: wrap; justify-content: center; }
+            .grid-pasos { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .fila-porque, .fila-porque.inversa { flex-direction: column; text-align: center; }
+            .prendas-personalizables { flex-direction: column; text-align: center; }
+            .prendas-texto .linea { margin: 0 auto 15px; }
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Oswald:wght@700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <a href="https://wa.me/51927089187?text=Hola%20Green%20Fashion" class="btn-flotante-wsp" target="_blank">📱</a>
-
     <header>
-        <a href="#inicio" class="logo">🌿 Green Fashion</a>
+        <a href="index.html" class="logo">🌿 Green Fashion</a>
         <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="productos.html">Catálogo</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#personaliza" style="background-color: var(--verde-principal); color: white; padding: 8px 18px; border-radius: 25px;">¿Qué te gustaría estampar?</a>
+            <a href="index.html">Inicio</a>
+            <a href="#">Catálogo</a>
+            <a href="#">Nosotros</a>
+            <!-- ESTE BOTÓN AHORA LLEVA A LA NUEVA PÁGINA -->
+            <a href="personalizar.html" class="btn-cta-header">¿Qué te gustaría estampar?</a>
         </nav>
     </header>
 
-    <section id="inicio" class="producto-hero">
-        <div class="producto-info">
-            <h1>Tú tienes la idea, nosotros la convertimos en tu <span>Polo Oversize</span></h1>
-            <p>Descubre nuestra línea de polos holgados. Una prenda cómoda, moderna y diseñada para ti. Combina la moda urbana con estampados llamativos mediante la técnica de sublimación.</p>
-            <a href="https://wa.me/51927089187" class="btn-comprar" target="_blank">Pedir mi Polo por WhatsApp</a>
-        </div>
-        <div class="producto-imagen">
-            <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Polo Oversize">
+    <section class="hero-texto">
+        <h1>Polos personalizados en Huancavelica, Perú</h1>
+        <p>Escoge entre una amplia colección de polos estampados con diseños para cada ocasión que puedes usar para regalar o para darte un gusto. Además realizamos estampados de polos personalizados con tu propio diseño por unidad, contamos con prendas oversize unisex. Nuestra técnica de estampado por sublimación garantiza alta calidad y durabilidad.</p>
+    </section>
+
+    <section class="seccion-categorias">
+        <h2>Categorías disponibles</h2>
+        <div class="linea-separador"></div>
+        <div class="grid-categorias">
+            <div class="tarjeta-cat">
+                <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&q=80" alt="Diseños peruanos">
+                <h3>Polos con diseños peruanos</h3>
+            </div>
+            <div class="tarjeta-cat">
+                <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&q=80" alt="Cumpleaños">
+                <h3>Polos para cumpleaños</h3>
+            </div>
+            <div class="tarjeta-cat">
+                <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600&q=80" alt="Parejas">
+                <h3>Polos para parejas</h3>
+            </div>
+            <a href="personalizar.html" style="text-decoration: none;">
+                <div class="tarjeta-cat">
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80" alt="Personalizar">
+                    <h3>Personalizar</h3>
+                </div>
+            </a>
         </div>
     </section>
 
-    <section id="nosotros" class="nosotros">
-        <div class="nosotros-contenedor">
-            <div class="tarjeta-nosotros">
-                <h3>Nuestra Misión</h3>
-                <p>Somos una empresa dedicada al diseño y personalización de polos de tipo oversize. Buscamos combinar comodidad, creatividad y calidad, permitiendo a jóvenes de 18 a 25 años expresar su identidad mediante una experiencia de compra cercana e innovadora.</p>
-            </div>
-            <div class="tarjeta-nosotros">
-                <h3>Nuestra Visión</h3>
-                <p>Ser una empresa referente de moda personalizada en el mercado juvenil peruano. Nos reconocen por la creatividad, calidad e innovación, logrando posicionarnos como la opción preferida por los jóvenes para expresar su estilo a través de prendas únicas.</p>
-            </div>
+    <section class="prendas-personalizables">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&q=80" alt="Prenda">
+        <div class="prendas-texto">
+            <h2>Prendas personalizables</h2>
+            <div class="linea"></div>
+            <p>Encontraste el mejor lugar para estampar un polo personalizado. Estampa cualquier imagen, frase o diseño en nuestros polos oversize de máxima comodidad.</p>
         </div>
     </section>
 
-    <section id="personaliza" class="personalizacion">
-        <h2>¿Qué te gustaría estampar?</h2>
-        <p style="color: #555; margin-bottom: 25px;">Haz clic en la opción que más te guste para iniciar tu diseño:</p>
+    <section class="como-solicitar">
+        <h2>¿Cómo solicitar un estampado personalizado?</h2>
+        <p>4 Simples pasos para solicitar un estampado de calidad</p>
+        <div class="linea-separador" style="margin: 0 auto;"></div>
         
-        <div class="opciones-diseno">
-            <div class="opcion" onclick="activarHerramienta(this, 'Textos')">Tus Frases Favoritas</div>
-            <div class="opcion" onclick="activarHerramienta(this, 'Ilustraciones')">Ilustraciones Únicas</div>
-            <div class="opcion" onclick="activarHerramienta(this, 'Fotos')">Fotografías e Imágenes</div>
-            <div class="opcion" onclick="activarHerramienta(this, 'Elementos')">Elementos Gráficos</div>
-        </div>
-
-        <div id="modulo-disenador">
-            <div class="disenador-layout">
-                
-                <div class="zona-polo">
-                    <div class="polo-mockup">
-                        <!-- Imagen base usando URL externa -->
-                        <img src="https://i.ibb.co/6y4B9x5/image-dae836.jpg" alt="Polo" class="base" id="imagen-base-polo">
-                        
-                        <div class="area-impresion">
-                            <img id="imagen-polo" src="" alt="">
-                            <div class="caja-textos" id="caja-textos">
-                                <div class="linea-texto" id="txt-sup"></div>
-                                <div class="linea-texto" id="txt-med"></div>
-                                <div class="linea-texto" id="txt-inf"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="selector-colores">
-                        <p>Colores: <span id="nombre-color">Blanco</span></p>
-                        <div class="grid-colores">
-                            <!-- Blanco -->
-                            <button class="btn-color activo" style="background-color: #FFFFFF;" onclick="cambiarColorPolo('https://i.ibb.co/6y4B9x5/image-dae836.jpg', 'Blanco', this)"></button>
-                            <!-- Negro -->
-                            <button class="btn-color" style="background-color: #000000;" onclick="cambiarColorPolo('https://i.ibb.co/5G5h28N/image-dae7bc.jpg', 'Negro', this)"></button>
-                            <!-- Azul Marino -->
-                            <button class="btn-color" style="background-color: #1A237E;" onclick="cambiarColorPolo('https://i.ibb.co/2d11g17/image-dae785.jpg', 'Azul Marino', this)"></button>
-                            <!-- Rojo -->
-                            <button class="btn-color" style="background-color: #B71C1C;" onclick="cambiarColorPolo('https://i.ibb.co/890y9fJ/image-dae75f.jpg', 'Rojo', this)"></button>
-                            <!-- Verde -->
-                            <button class="btn-color" style="background-color: #1B5E20;" onclick="cambiarColorPolo('https://i.ibb.co/5g5f7f2/image-dae49c.jpg', 'Verde', this)"></button>
-                            <!-- Palo Rosa -->
-                            <button class="btn-color" style="background-color: #F8BBD0;" onclick="cambiarColorPolo('https://i.ibb.co/3024808/image-dae47e.jpg', 'Palo Rosa', this)"></button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ZONA DERECHA: HERRAMIENTAS LIMPIAS -->
-                <div class="zona-controles">
-                    <input type="file" id="input-imagen" accept="image/png, image/jpeg" style="display: none;" onchange="subirFotografia(event)">
-
-                    <!-- TEXTOS (3 LÍNEAS) -->
-                    <div id="herramienta-Textos" class="bloque-herramienta">
-                        <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Escribe tus Frases:</p>
-                        <div class="control-grupo">
-                            <div class="fila-input"><input type="text" id="in-sup" placeholder="Línea Superior..." oninput="actualizarTextos()"></div>
-                            <div class="fila-input"><input type="text" id="in-med" placeholder="Línea Central..." oninput="actualizarTextos()"></div>
-                            <div class="fila-input"><input type="text" id="in-inf" placeholder="Línea Inferior..." oninput="actualizarTextos()"></div>
-                        </div>
-                        
-                        <div class="fila-input">
-                            <select id="select-fuente" onchange="actualizarEstilosGlobales()">
-                                <option value="'Segoe UI', sans-serif">Estándar Limpia</option>
-                                <option value="'Oswald', sans-serif">Urbana Alta</option>
-                                <option value="'Pacifico', cursive">Cursiva Elegante</option>
-                                <option value="'Bangers', cursive">Estilo Cómic</option>
-                            </select>
-                            <input type="number" id="input-tamano" value="20" onchange="actualizarEstilosGlobales()" title="Tamaño (px)" style="width:70px;">
-                        </div>
-
-                        <div class="selector-color-linea">
-                            <label style="margin:0;">Color Texto:</label>
-                            <input type="color" id="color-texto" value="#000000" oninput="actualizarEstilosGlobales()">
-                        </div>
-                        <div class="selector-color-linea" style="border:none;">
-                            <label style="margin:0;">Color Contorno:</label>
-                            <input type="color" id="color-borde" value="#ffffff" oninput="actualizarEstilosGlobales()">
-                        </div>
-                        <button onclick="limpiarDiseno()" style="padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Diseño</button>
-                    </div>
-
-                    <!-- ILUSTRACIONES -->
-                    <div id="herramienta-Ilustraciones" class="bloque-herramienta">
-                        <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Selecciona una ilustración:</p>
-                        <div class="grid-galeria-mini">
-                            <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=200&q=80')"><img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=200&q=80"></div>
-                            <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=200&q=80')"><img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=200&q=80"></div>
-                            <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=200&q=80')"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=200&q=80"></div>
-                            <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=200&q=80')"><img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=200&q=80"></div>
-                        </div>
-                        <div class="btn-subir-propio" onclick="document.getElementById('input-imagen').click()">☁️ Sube tu propia ilustración</div>
-                        <button onclick="limpiarDiseno()" style="padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Ilustración</button>
-                    </div>
-
-                    <!-- FOTOS -->
-                    <div id="herramienta-Fotos" class="bloque-herramienta">
-                        <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Sube tu fotografía:</p>
-                        <div class="zona-drop" onclick="document.getElementById('input-imagen').click()">
-                            <p style="font-weight: bold; margin-bottom: 10px; color: var(--verde-principal);">Clic aquí para subir archivo</p>
-                            <p style="font-size: 40px; color: #999;">📸</p>
-                            <p style="font-size: 0.8rem; color: #777; margin-top: 10px;">Archivos JPG o PNG de alta calidad.</p>
-                        </div>
-                        <button onclick="limpiarDiseno()" style="padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Foto</button>
-                    </div>
-
-                    <!-- ELEMENTOS -->
-                    <div id="herramienta-Elementos" class="bloque-herramienta">
-                        <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Añade un gráfico rápido:</p>
-                        <div class="grid-galeria-mini">
-                            <div class="item-elemento" onclick="aplicarElemento('👽')">👽</div>
-                            <div class="item-elemento" onclick="aplicarElemento('🔥')">🔥</div>
-                            <div class="item-elemento" onclick="aplicarElemento('🐾')">🐾</div>
-                            <div class="item-elemento" onclick="aplicarElemento('⚽')">⚽</div>
-                        </div>
-                        <div class="btn-subir-propio" onclick="document.getElementById('input-imagen').click()">☁️ Sube tu propio elemento</div>
-                        <button onclick="limpiarDiseno()" style="padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Elemento</button>
-                    </div>
-
-                    <!-- COMPRA -->
-                    <div class="zona-compra">
-                        <label style="color: #666; font-size: 0.9rem; font-weight: bold;">Talla:</label>
-                        <div class="tallas">
-                            <button class="btn-talla" onclick="seleccionarTalla(this, 'XS')">XS</button>
-                            <button class="btn-talla" onclick="seleccionarTalla(this, 'S')">S</button>
-                            <button class="btn-talla activa" onclick="seleccionarTalla(this, 'M')">M</button>
-                            <button class="btn-talla" onclick="seleccionarTalla(this, 'L')">L</button>
-                            <button class="btn-talla" onclick="seleccionarTalla(this, 'XL')">XL</button>
-                        </div>
-                        <div class="precio-final">S/ 45.00</div>
-                        <button class="btn-carrito" onclick="agregarAlCarrito()">🛒 AGREGAR AL CARRITO</button>
-                    </div>
-                </div>
+        <div class="grid-pasos">
+            <div class="paso">
+                <div class="paso-icono">🖼️</div>
+                <p>Ten listo la imagen o diseño</p>
+            </div>
+            <div class="paso">
+                <div class="paso-icono">🛒</div>
+                <p>Realiza tu pedido por la web</p>
+            </div>
+            <div class="paso">
+                <div class="paso-icono">📦</div>
+                <p>Preparamos el producto</p>
+            </div>
+            <div class="paso">
+                <div class="paso-icono">🚚</div>
+                <p>Te enviamos el producto</p>
             </div>
         </div>
     </section>
 
-    <footer class="footer-completo">
-        <div class="footer-columnas">
-            <div class="footer-col">
-                <a href="#inicio" class="footer-logo">🌿 Green Fashion</a>
-                <p style="color:var(--blanco); font-weight:bold; margin-bottom:10px;">Nuestra promesa</p>
-                <p style="color:#BBB; line-height: 1.5; font-size: 0.9rem;">Estamos comprometidos a hacer que te enamores de nuestros productos, cuidando hasta el más mínimo detalle en la sublimación.</p>
+    <section class="porque-nosotros">
+        <h2>¿Porqué realizar tu estampado con nosotros?</h2>
+        <p>Porque la calidad está garantizada. Con nosotros te llegará una prenda de un proceso con estándares de calidad, con lo último en tecnología de sublimación:</p>
+        
+        <div class="fila-porque">
+            <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&q=80" alt="Tecnología">
+            <div class="fila-texto">
+                <h3>Sublimación de última generación</h3>
+                <p>Nuestra técnica te permite estampar imágenes sin límites de colores. Los diseños se fusionan con la tela, asegurando que nunca se cuarteen ni pierdan color con los lavados.</p>
             </div>
-            <div class="footer-col">
-                <p style="color:var(--blanco); font-weight:bold; margin-bottom:15px;">Contacto</p>
-                <a href="https://wa.me/51927089187" class="footer-link" target="_blank">📞 +51 927 089 187</a>
-                <a href="mailto:contacto@greenfashion.pe" class="footer-link">✉️ contacto@greenfashion.pe</a>
+        </div>
+
+        <div class="fila-porque inversa">
+            <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&q=80" alt="Equipos">
+            <div class="fila-texto">
+                <h3>Estilo Oversize Moderno</h3>
+                <p>Usamos un corte holgado y juvenil en nuestras prendas, diseñado específicamente para brindar máxima comodidad y adaptarse a las tendencias actuales de la moda urbana.</p>
+            </div>
+        </div>
+        
+        <div class="fila-porque">
+            <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80" alt="Insumos">
+            <div class="fila-texto">
+                <h3>Insumos de calidad</h3>
+                <p>Utilizamos tintas premium de altísima calidad para que tus diseños resalten con colores vivos y vibrantes, cuidando al mismo tiempo el tejido para una sensación suave al tacto.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-barra-top">
+            <span>👕 Desde una unidad</span>
+            <span>✨ 100% personalizado</span>
+            <span>📱 Atención rápida por WhatsApp</span>
+            <span>📍 Envíos en Huancavelica</span>
+        </div>
+        
+        <div class="footer-principal">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Polos Personalizados</h3>
+                    <p>Vendemos polos estampados personalizados estilo oversize con calidad premium garantizada.</p>
+                    <p style="margin-top: 15px; font-size: 1.5rem;">📱 🌿</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Información</h3>
+                    <a href="#">Nosotros</a>
+                    <a href="#">Catálogo</a>
+                    <a href="#">Contáctenos</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="personalizar.html" style="display:inline;">Personalizar Polo</a></li>
+                        <li><a href="#">Polos Urbanos</a></li>
+                        <li><a href="#">Polos Temáticos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contáctanos</h3>
+                    <a href="https://wa.me/51927089187" target="_blank">📞 +51 927 089 187</a>
+                    <a href="mailto:ventas@greenfashion.pe">✉️ ventas@greenfashion.pe</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="iconos-pago">💳 💵 🏦</div>
+                <p>Términos y Condiciones &nbsp;|&nbsp; Políticas de Privacidad</p>
+                <p style="margin-top: 10px;">&copy; 2026 Green Fashion.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        let tallaSel = "M";
-        let colorSel = "Blanco";
-
-        function activarHerramienta(botonPill, nombreHerramienta) {
-            document.querySelectorAll('.opcion').forEach(btn => btn.classList.remove('activa'));
-            botonPill.classList.add('activa');
-            
-            document.querySelectorAll('.bloque-herramienta').forEach(bloque => bloque.classList.remove('activo'));
-            document.getElementById('herramienta-' + nombreHerramienta).classList.add('activo');
-            
-            let disenador = document.getElementById('modulo-disenador');
-            disenador.style.display = 'block';
-            setTimeout(() => { disenador.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
-        }
-
-        function actualizarTextos() {
-            document.getElementById('txt-sup').innerText = document.getElementById('in-sup').value;
-            document.getElementById('txt-med').innerText = document.getElementById('in-med').value;
-            document.getElementById('txt-inf').innerText = document.getElementById('in-inf').value;
-            document.getElementById('imagen-polo').style.display = 'none';
-            document.getElementById('caja-textos').style.display = 'flex';
-        }
-
-        function actualizarEstilosGlobales() {
-            let tamano = document.getElementById('input-tamano').value + 'px';
-            let fuente = document.getElementById('select-fuente').value;
-            let color = document.getElementById('color-texto').value;
-            let borde = document.getElementById('color-borde').value;
-            let shadow = `-1px -1px 0 ${borde}, 1px -1px 0 ${borde}, -1px 1px 0 ${borde}, 1px 1px 0 ${borde}`;
-
-            document.querySelectorAll('.linea-texto').forEach(linea => {
-                linea.style.fontSize = tamano;
-                linea.style.fontFamily = fuente;
-                linea.style.color = color;
-                linea.style.textShadow = shadow;
-            });
-        }
-
-        function aplicarImagen(url) {
-            limpiarDiseno();
-            document.getElementById('imagen-polo').src = url;
-            document.getElementById('imagen-polo').style.display = 'block';
-            document.getElementById('caja-textos').style.display = 'none';
-        }
-
-        /* CORRECCIÓN: Función de subida resetea el input para evitar bloqueos y permite subir de nuevo */
-        function subirFotografia(event) {
-            let archivo = event.target.files[0];
-            if (archivo) {
-                let lector = new FileReader();
-                lector.onload = function(e) { aplicarImagen(e.target.result); }
-                lector.readAsDataURL(archivo);
-            }
-            event.target.value = ''; 
-        }
-
-        function aplicarElemento(emoji) {
-            limpiarDiseno();
-            document.getElementById('txt-med').innerText = emoji;
-            document.getElementById('txt-med').style.fontSize = '80px';
-            document.getElementById('caja-textos').style.display = 'flex';
-        }
-
-        function limpiarDiseno() {
-            document.getElementById('in-sup').value = '';
-            document.getElementById('in-med').value = '';
-            document.getElementById('in-inf').value = '';
-            document.getElementById('txt-sup').innerText = '';
-            document.getElementById('txt-med').innerText = '';
-            document.getElementById('txt-inf').innerText = '';
-            document.getElementById('imagen-polo').src = '';
-            document.getElementById('imagen-polo').style.display = 'none';
-            document.getElementById('caja-textos').style.display = 'flex';
-        }
-
-        function cambiarColorPolo(urlImagen, nombre, boton) {
-            document.querySelectorAll('.btn-color').forEach(b => b.classList.remove('activo'));
-            boton.classList.add('activo');
-            document.getElementById('nombre-color').innerText = nombre;
-            colorSel = nombre;
-            
-            document.getElementById('imagen-base-polo').src = urlImagen;
-        }
-
-        function seleccionarTalla(boton, talla) {
-            document.querySelectorAll('.btn-talla').forEach(b => b.classList.remove('activa'));
-            boton.classList.add('activa');
-            tallaSel = talla;
-        }
-
-        function agregarAlCarrito() {
-            let msj = `¡Hola Green Fashion! He diseñado mi polo en la web y quiero agregarlo a mi pedido.\n\n📌 Detalles:\n- Prenda: Polo Oversize.\n- Color: ${colorSel}\n- Talla: ${tallaSel}\n- Precio: S/ 45.00`;
-            window.open(`https://wa.me/51927089187?text=${encodeURIComponent(msj)}`, '_blank');
-        }
-    </script>
 </body>
 </html>
