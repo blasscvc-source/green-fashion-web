@@ -6,7 +6,7 @@
     <title>Catálogo Completo | Green Fashion</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        :root { --verde-principal: #2E7D32; --verde-oscuro: #1B5E20; --texto-oscuro: #333333; --texto-suave: #555555; --blanco: #FFFFFF; --fondo-gris: #F9F9F9; --borde: #E0E0E0; }
+        :root { --verde-principal: #2E7D32; --verde-oscuro: #1B5E20; --texto-oscuro: #333333; --blanco: #FFFFFF; --fondo-gris: #F9F9F9; --borde: #E0E0E0; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { color: var(--texto-oscuro); background-color: var(--blanco); line-height: 1.6; }
         h1, h2, h3 { font-family: 'Lora', serif; color: var(--texto-oscuro); font-weight: 600; }
@@ -19,23 +19,21 @@
         nav a:hover { color: var(--verde-principal); }
         .btn-cta-header { background-color: var(--verde-principal); color: var(--blanco); padding: 10px 20px; border-radius: 25px; font-weight: bold; }
         
-        .encabezado-general { text-align: center; padding: 60px 20px; background-color: var(--fondo-gris); border-bottom: 1px solid var(--borde); }
-        .encabezado-general h1 { font-size: 2.8rem; margin-bottom: 10px; }
-        
+        /* ESTILO IDÉNTICO A TUS CAPTURAS */
         .seccion-tema { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
-        .titulo-tema { font-size: 2.2rem; margin-bottom: 10px; text-align: center; color: var(--verde-oscuro);}
-        .linea-tema { width: 60px; height: 3px; background-color: var(--verde-principal); margin: 0 auto 40px; }
+        .titulo-tema { font-size: 2.2rem; margin-bottom: 10px; text-align: center; color: var(--verde-principal); font-family: 'Lora', serif;}
+        .linea-tema { width: 50px; height: 2px; background-color: var(--verde-principal); margin: 0 auto 40px; }
         
         .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
-        .tarjeta-producto { border: 1px solid var(--borde); border-radius: 10px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--blanco);}
+        .tarjeta-producto { border: 1px solid var(--borde); border-radius: 8px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--blanco);}
         .tarjeta-producto:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: var(--verde-principal); }
-        .tarjeta-producto img { width: 100%; height: 300px; object-fit: cover; border-bottom: 1px solid var(--borde); }
+        .tarjeta-producto img { width: 100%; height: 350px; object-fit: cover; border-bottom: 1px solid var(--borde); }
         
         .info-card { padding: 20px; text-align: center; display: flex; flex-direction: column; flex-grow: 1; }
-        .info-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .info-card .precio { font-size: 1.2rem; font-weight: bold; color: var(--verde-principal); margin-bottom: 20px; }
-        .btn-ver { background-color: var(--blanco); color: var(--texto-oscuro); border: 2px solid var(--texto-oscuro); padding: 10px; border-radius: 5px; font-weight: bold; transition: 0.2s; margin-top: auto; }
-        .tarjeta-producto:hover .btn-ver { background-color: var(--texto-oscuro); color: var(--blanco); }
+        .info-card h3 { font-size: 1.3rem; margin-bottom: 10px; font-family: 'Lora', serif;}
+        .info-card .precio { font-size: 1.1rem; font-weight: bold; color: var(--verde-principal); margin-bottom: 20px; }
+        .btn-ver { background-color: #333; color: var(--blanco); padding: 12px; border-radius: 5px; font-weight: bold; transition: 0.2s; margin-top: auto; }
+        .tarjeta-producto:hover .btn-ver { background-color: var(--verde-principal); }
 
         footer { background-color: var(--fondo-gris); padding: 40px 20px; text-align: center; border-top: 1px solid var(--borde); margin-top: 80px;}
         @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } }
@@ -49,33 +47,27 @@
             <a href="index.html">Inicio</a>
             <a href="catalogo.html" style="color:var(--verde-principal); font-weight:bold;">Catálogo</a>
             <a href="#">Nosotros</a>
-            <a href="personalizar.html" class="btn-cta-header">¿Qué te gustaría estampar?</a>
+            <a href="creador.html" class="btn-cta-header">¿Qué te gustaría estampar?</a>
         </nav>
     </header>
-
-    <div class="encabezado-general">
-        <h1>Catálogo de Diseños</h1>
-        <p>Explora todas nuestras colecciones. Encuentra el estilo perfecto para ti.</p>
-    </div>
 
     <!-- SECCIÓN 1: DISEÑOS PERUANOS -->
     <div id="peruanos" class="seccion-tema">
         <h2 class="titulo-tema">Polos con Diseños Peruanos</h2>
         <div class="linea-tema"></div>
         <div class="grid-productos">
-            <!-- Este enlace envía el ID 'peruano1' a la página de detalle -->
             <a href="detalle.html?id=peruano1" class="tarjeta-producto">
-                <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=500&q=80" alt="Polo Peruano">
+                <img src="https://i.ibb.co/6y4B9x5/image-dae836.jpg" alt="Polo Blanco">
                 <div class="info-card">
-                    <h3>Polo Estilo Peruano Clásico</h3>
+                    <h3>Polo Estilo Peruano Blanco</h3>
                     <div class="precio">S/ 45.00</div>
                     <div class="btn-ver">Ver Producto</div>
                 </div>
             </a>
             <a href="detalle.html?id=peruano2" class="tarjeta-producto">
-                <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&q=80" alt="Polo Frases">
+                <img src="https://i.ibb.co/5G5h28N/image-dae7bc.jpg" alt="Polo Negro">
                 <div class="info-card">
-                    <h3>Polo Frases Peruanas</h3>
+                    <h3>Polo Estilo Peruano Negro</h3>
                     <div class="precio">S/ 45.00</div>
                     <div class="btn-ver">Ver Producto</div>
                 </div>
@@ -84,12 +76,12 @@
     </div>
 
     <!-- SECCIÓN 2: CUMPLEAÑOS -->
-    <div id="cumpleanos" class="seccion-tema" style="background-color: #FAFAFA; padding: 60px 20px; border-radius: 10px;">
+    <div id="cumpleanos" class="seccion-tema">
         <h2 class="titulo-tema">Polos para Cumpleaños</h2>
         <div class="linea-tema"></div>
         <div class="grid-productos">
             <a href="detalle.html?id=cumple1" class="tarjeta-producto">
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80" alt="Polo Cumple">
+                <img src="https://i.ibb.co/2d11g17/image-dae785.jpg" alt="Polo Azul">
                 <div class="info-card">
                     <h3>Polo "No tengo 30"</h3>
                     <div class="precio">S/ 45.00</div>
@@ -97,7 +89,7 @@
                 </div>
             </a>
             <a href="detalle.html?id=cumple2" class="tarjeta-producto">
-                <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500&q=80" alt="Polo Cumple 2">
+                <img src="https://i.ibb.co/890y9fJ/image-dae75f.jpg" alt="Polo Rojo">
                 <div class="info-card">
                     <h3>Polo "La vida comienza..."</h3>
                     <div class="precio">S/ 45.00</div>
@@ -113,9 +105,9 @@
         <div class="linea-tema"></div>
         <div class="grid-productos">
             <a href="detalle.html?id=pareja1" class="tarjeta-producto">
-                <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=500&q=80" alt="Polo Pareja">
+                <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=500&q=80" alt="Polo Pareja Real">
                 <div class="info-card">
-                    <h3>Dúo Polos "King & Queen"</h3>
+                    <h3>Dúo Polos Parejas</h3>
                     <div class="precio">S/ 85.00 (El par)</div>
                     <div class="btn-ver">Ver Producto</div>
                 </div>
