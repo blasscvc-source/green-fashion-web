@@ -51,17 +51,17 @@
 
         .disenador-layout { display: flex; flex-wrap: wrap; background: var(--blanco); box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; border: 1px solid var(--gris-borde); }
 
-        /* MOCKUP CON TUS IMÁGENES EXACTAS */
         .zona-polo { flex: 1.2; min-width: 350px; padding: 30px; background-color: #FAFAFA; display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--gris-borde); }
         .polo-mockup { position: relative; width: 100%; max-width: 400px; min-height: 400px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; display: flex; justify-content: center; align-items: center;}
         
         .polo-mockup img.base { width: 100%; height: 100%; object-fit: cover; display: block; }
         
-        /* Área de impresión ajustada exactamente al recuadro punteado de tus imágenes */
         .area-impresion { position: absolute; top: 22%; left: 27%; width: 46%; height: 48%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; overflow: hidden; z-index: 10; }
         .caja-textos { display: flex; flex-direction: column; justify-content: space-between; height: 100%; width: 100%; }
         .linea-texto { font-size: 22px; font-weight: bold; color: #000; text-align: center; word-break: break-word; line-height: 1.1;}
-        #imagen-polo { max-width: 100%; max-height: 100%; display: none; object-fit: contain; }
+        
+        /* CORRECCIÓN: object-fit contain para que el diseño no desaparezca */
+        #imagen-polo { width: 100%; height: 100%; display: none; object-fit: contain; z-index: 10;}
 
         .selector-colores { margin-top: 25px; width: 100%; max-width: 400px; text-align: left;}
         .selector-colores p { font-weight: bold; margin-bottom: 10px; font-size: 0.95rem; }
@@ -166,10 +166,9 @@
         <div id="modulo-disenador">
             <div class="disenador-layout">
                 
-                <!-- ZONA IZQUIERDA: TUS IMÁGENES OFICIALES PARA CADA COLOR -->
                 <div class="zona-polo">
                     <div class="polo-mockup">
-                        <!-- Imagen base oficial predeterminada (Blanco) -->
+                        <!-- Imagen base usando URL externa -->
                         <img src="https://i.ibb.co/6y4B9x5/image-dae836.jpg" alt="Polo" class="base" id="imagen-base-polo">
                         
                         <div class="area-impresion">
@@ -351,6 +350,7 @@
             document.getElementById('caja-textos').style.display = 'none';
         }
 
+        /* CORRECCIÓN: Función de subida resetea el input para evitar bloqueos y permite subir de nuevo */
         function subirFotografia(event) {
             let archivo = event.target.files[0];
             if (archivo) {
@@ -358,6 +358,7 @@
                 lector.onload = function(e) { aplicarImagen(e.target.result); }
                 lector.readAsDataURL(archivo);
             }
+            event.target.value = ''; 
         }
 
         function aplicarElemento(emoji) {
@@ -379,7 +380,6 @@
             document.getElementById('caja-textos').style.display = 'flex';
         }
 
-        // Cambio de color usando exclusivamente tus imágenes oficiales proporcionadas
         function cambiarColorPolo(urlImagen, nombre, boton) {
             document.querySelectorAll('.btn-color').forEach(b => b.classList.remove('activo'));
             boton.classList.add('activo');
