@@ -13,6 +13,7 @@
             --texto-oscuro: #333333;
             --fondo-claro: #FAFAFA;
             --gris-borde: #DDDDDD;
+            --rojo-alerta: #F44336;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -20,67 +21,79 @@
 
         /* --- HEADER --- */
         header { background-color: var(--blanco); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-size: 24px; font-weight: bold; color: var(--verde-principal); text-decoration: none; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--verde-principal); text-decoration: none; display: flex; align-items: center; gap: 8px;}
         nav a { margin-left: 20px; text-decoration: none; color: var(--texto-oscuro); font-weight: 600; }
         nav a:hover { color: var(--verde-principal); }
 
-        /* --- CONTENEDOR DEL DISEÑADOR --- */
-        .contenedor-disenador {
+        /* --- CONTENEDOR PRINCIPAL DEL DISEÑADOR --- */
+        .contenedor-master {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .titulo-seccion { text-align: center; font-size: 2rem; color: var(--verde-principal); margin-bottom: 30px; }
+
+        .disenador-layout {
             display: flex;
             flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 40px auto;
             background: var(--blanco);
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border-radius: 10px;
             overflow: hidden;
+            border: 1px solid var(--gris-borde);
         }
 
         /* --- ZONA IZQUIERDA: EL POLO --- */
         .zona-polo {
-            flex: 1;
+            flex: 1.2;
             min-width: 350px;
-            padding: 40px;
-            background-color: #F9F9F9;
+            padding: 30px;
+            background-color: var(--blanco);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            position: relative;
+            border-right: 1px solid var(--gris-borde);
         }
 
         .polo-mockup {
             position: relative;
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
+            background-color: #f4f4f4; /* Fondo gris claro para ver polos blancos */
+            border-radius: 10px;
+            padding: 20px;
         }
 
+        /* Imagen base del polo que cambiará de color mediante filtros CSS */
         .polo-mockup img.base {
             width: 100%;
             display: block;
+            transition: filter 0.3s ease;
         }
 
         /* Área punteada donde va el diseño */
         .area-impresion {
             position: absolute;
-            top: 25%;
+            top: 28%;
             left: 28%;
             width: 44%;
-            height: 45%;
-            border: 1px dashed #999;
+            height: 40%;
+            border: 1px dashed rgba(0,0,0,0.3);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
 
         #texto-polo {
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
             color: #000;
             text-align: center;
             word-break: break-word;
             z-index: 2;
+            transition: all 0.2s ease;
         }
 
         #imagen-polo {
@@ -90,241 +103,361 @@
             z-index: 1;
         }
 
+        /* Selector de Colores del Polo */
+        .selector-colores {
+            margin-top: 25px;
+            width: 100%;
+            max-width: 450px;
+        }
+        .selector-colores p { font-weight: bold; margin-bottom: 10px; font-size: 0.95rem; }
+        .grid-colores {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .btn-color {
+            width: 35px;
+            height: 35px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn-color:hover { transform: scale(1.1); }
+        .btn-color.activo { border: 3px solid var(--texto-oscuro); box-shadow: 0 0 5px rgba(0,0,0,0.3); }
+
         /* --- ZONA DERECHA: CONTROLES --- */
         .zona-controles {
             flex: 1;
             min-width: 350px;
-            padding: 30px;
-            border-left: 1px solid var(--gris-borde);
+            background-color: var(--fondo-claro);
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Pestañas (Tabs) */
+        /* Pestañas (Tabs) estilo Rojo/Gris de tu referencia */
         .tabs {
             display: flex;
-            border-bottom: 2px solid var(--gris-borde);
-            margin-bottom: 20px;
+            background: var(--blanco);
+            border-bottom: 1px solid var(--gris-borde);
         }
-
         .tab {
             flex: 1;
-            padding: 15px;
+            padding: 18px 10px;
             text-align: center;
             font-weight: bold;
             cursor: pointer;
-            color: #777;
-            background: #F5F5F5;
+            color: #666;
             transition: 0.3s;
+            font-size: 0.95rem;
+            border-bottom: 3px solid transparent;
         }
-
         .tab.activo {
-            background: var(--verde-principal);
-            color: var(--blanco);
+            color: var(--rojo-alerta);
+            border-bottom-color: var(--rojo-alerta);
         }
 
-        .contenido-tab { display: none; }
+        .contenido-tab { display: none; padding: 25px; }
         .contenido-tab.activo { display: block; animation: aparecer 0.3s ease; }
-
         @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Controles Internos */
+        /* Formularios y Controles */
         .control-grupo { margin-bottom: 20px; }
-        .control-grupo label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 0.9rem; }
+        .control-grupo label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: #444; }
         
-        input[type="text"], select, input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--gris-borde);
-            border-radius: 5px;
-            font-size: 1rem;
-        }
+        .fila-input { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+        .fila-input input[type="text"] { flex: 1; padding: 12px; border: 1px solid var(--gris-borde); border-radius: 5px; font-size: 1rem; }
+        .fila-input input[type="number"] { width: 70px; padding: 12px; border: 1px solid var(--gris-borde); border-radius: 5px; }
+        
+        select { width: 100%; padding: 12px; border: 1px solid var(--gris-borde); border-radius: 5px; font-size: 1rem; background: var(--blanco); }
+        input[type="range"] { width: 100%; margin-top: 10px; }
+        
+        .selector-color-linea { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed var(--gris-borde); padding-bottom: 10px;}
+        input[type="color"] { width: 45px; height: 35px; border: 1px solid #ccc; cursor: pointer; border-radius: 5px;}
 
-        input[type="color"] {
-            width: 50px;
-            height: 40px;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Grilla de Cliparts */
-        .grid-cliparts {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .clipart-btn {
-            border: 1px solid var(--gris-borde);
-            padding: 15px;
-            border-radius: 5px;
-            cursor: pointer;
+        /* Zona de Subida de Imagen */
+        .zona-drop {
+            border: 2px dashed #bbb;
+            padding: 40px 20px;
             text-align: center;
-            font-size: 30px;
-            background: var(--blanco);
-            transition: 0.2s;
+            background: #eee;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: background 0.3s;
         }
-        .clipart-btn:hover { border-color: var(--verde-principal); transform: scale(1.05); }
+        .zona-drop:hover { background: #e0e0e0; }
+        .nota-subida { font-size: 0.8rem; color: #777; text-align: center; }
 
-        /* --- SECCIÓN INFERIOR: CARRITO --- */
+        /* --- SECCIÓN INFERIOR: COMPRA --- */
         .zona-compra {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed var(--gris-borde);
+            padding: 25px;
+            background: var(--blanco);
+            border-top: 1px solid var(--gris-borde);
+            margin-top: auto;
         }
         
-        .tallas { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tallas { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;}
         .btn-talla { 
-            padding: 10px 15px; border: 1px solid var(--gris-borde); border-radius: 5px; 
-            background: var(--blanco); cursor: pointer; font-weight: bold; transition: 0.2s;
+            width: 45px; height: 45px; border: 1px solid var(--gris-borde); border-radius: 5px; 
+            background: var(--blanco); cursor: pointer; font-weight: bold; color: #555; transition: 0.2s;
         }
-        .btn-talla.activa { background: var(--verde-principal); color: var(--blanco); border-color: var(--verde-principal); }
+        .btn-talla:hover { border-color: var(--texto-oscuro); }
+        .btn-talla.activa { border: 2px solid var(--texto-oscuro); color: var(--texto-oscuro); box-shadow: 0 0 5px rgba(0,0,0,0.1); }
         
-        .precio-final { font-size: 1.8rem; font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; }
+        .precio-final { font-size: 1.8rem; font-weight: bold; color: var(--texto-oscuro); text-align: right; margin-bottom: 15px; }
 
-        .btn-whatsapp {
-            display: block; width: 100%; text-align: center; background: #25D366; color: white;
-            padding: 15px; font-size: 1.2rem; font-weight: bold; text-decoration: none;
-            border-radius: 8px; transition: 0.3s; border: none; cursor: pointer;
+        .btn-agregar {
+            display: block; width: 100%; text-align: center; background: #FF7B72; color: white;
+            padding: 15px; font-size: 1.1rem; font-weight: bold; text-decoration: none;
+            border-radius: 5px; border: none; cursor: pointer; transition: 0.3s; margin-bottom: 10px;
         }
-        .btn-whatsapp:hover { background: #1EBE55; }
+        .btn-agregar:hover { background: #FF5A4F; }
+        
+        .btn-whatsapp-pequeno {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 12px; background: #25D366; color: white; border: none;
+            border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none;
+        }
+
+        /* --- BLOQUE DE INFORMACIÓN DEL PRODUCTO --- */
+        .info-adicional {
+            margin-top: 50px;
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .info-adicional h2 { color: var(--texto-oscuro); margin-bottom: 20px; font-size: 1.8rem; }
+        .info-adicional p { margin-bottom: 15px; color: #555; line-height: 1.8; }
+        .info-adicional ul { margin-left: 20px; margin-bottom: 20px; color: #555; }
+        .info-adicional li { margin-bottom: 8px; }
+
+        /* Cuadro de Tallas */
+        .cuadro-tallas-img {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto 0;
+            display: block;
+            border: 1px solid var(--gris-borde);
+            border-radius: 8px;
+        }
 
         @media (max-width: 768px) {
-            .contenedor-disenador { flex-direction: column; margin: 10px; }
-            .zona-controles { border-left: none; border-top: 1px solid var(--gris-borde); }
+            .disenador-layout { flex-direction: column; }
+            .zona-polo { border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .info-adicional { padding: 20px; }
         }
     </style>
+    <!-- Importamos algunas fuentes creativas de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Oswald:wght@700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <a href="index.html" class="logo">🌿 Green Fashion</a>
-        <nav>
-            <a href="index.html">Volver al Inicio</a>
-        </nav>
+        <nav><a href="index.html">Volver al Inicio</a></nav>
     </header>
 
-    <div class="contenedor-disenador">
-        
-        <!-- ZONA IZQUIERDA: MOCKUP DEL POLO -->
-        <div class="zona-polo">
-            <div class="polo-mockup">
-                <!-- Imagen de polo blanco limpio para simular el diseño -->
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Polo en blanco" class="base">
-                
-                <div class="area-impresion">
-                    <img id="imagen-polo" src="" alt="">
-                    <div id="texto-polo"></div>
+    <div class="contenedor-master">
+        <h1 class="titulo-seccion">Diseña tu Polo</h1>
+
+        <div class="disenador-layout">
+            
+            <!-- ZONA IZQUIERDA: MOCKUP DEL POLO Y COLORES -->
+            <div class="zona-polo">
+                <div class="polo-mockup">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Polo" class="base" id="imagen-base-polo">
+                    
+                    <div class="area-impresion">
+                        <img id="imagen-polo" src="" alt="">
+                        <div id="texto-polo"></div>
+                    </div>
                 </div>
+
+                <div class="selector-colores">
+                    <p>Colores: <span id="nombre-color">Blanco</span></p>
+                    <div class="grid-colores">
+                        <button class="btn-color activo" style="background-color: #FFFFFF;" onclick="cambiarColorPolo('#FFFFFF', 'Blanco', this)"></button>
+                        <button class="btn-color" style="background-color: #000000;" onclick="cambiarColorPolo('#000000', 'Negro', this)"></button>
+                        <button class="btn-color" style="background-color: #1A237E;" onclick="cambiarColorPolo('#1A237E', 'Azul Marino', this)"></button>
+                        <button class="btn-color" style="background-color: #B71C1C;" onclick="cambiarColorPolo('#B71C1C', 'Rojo', this)"></button>
+                        <button class="btn-color" style="background-color: #4CAF50;" onclick="cambiarColorPolo('#4CAF50', 'Verde', this)"></button>
+                        <button class="btn-color" style="background-color: #9E9E9E;" onclick="cambiarColorPolo('#9E9E9E', 'Gris', this)"></button>
+                        <button class="btn-color" style="background-color: #F8BBD0;" onclick="cambiarColorPolo('#F8BBD0', 'Palo Rosa', this)"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ZONA DERECHA: HERRAMIENTAS -->
+            <div class="zona-controles">
+                
+                <div class="tabs">
+                    <div class="tab activo" onclick="cambiarTab('textos', this)">🔤 Textos</div>
+                    <div class="tab" onclick="cambiarTab('logo', this)">📤 Tu logo</div>
+                </div>
+
+                <!-- TAB: TEXTOS -->
+                <div id="tab-textos" class="contenido-tab activo">
+                    <div class="control-grupo">
+                        <label>Ingresar texto</label>
+                        <div class="fila-input">
+                            <input type="text" id="input-texto" placeholder="Escribe aquí tu frase..." oninput="actualizarTexto()">
+                            <input type="number" id="input-tamano" value="30" onchange="actualizarTamano()" title="Tamaño">
+                        </div>
+                    </div>
+
+                    <div class="control-grupo">
+                        <label>Fuente (Creativas):</label>
+                        <select id="select-fuente" onchange="actualizarFuente()">
+                            <option value="'Segoe UI', sans-serif">Estándar Limpia</option>
+                            <option value="'Oswald', sans-serif">Oswald (Urbana y Alta)</option>
+                            <option value="'Pacifico', cursive">Pacifico (Cursiva Elegante)</option>
+                            <option value="'Bangers', cursive">Bangers (Estilo Cómic)</option>
+                            <option value="'Caveat', cursive">Caveat (Estilo Plumón/Mano)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-grupo">
+                        <label>Espaciado entre letras:</label>
+                        <input type="range" id="rango-espaciado" min="0" max="20" value="0" oninput="actualizarEspaciado()">
+                    </div>
+
+                    <div class="selector-color-linea">
+                        <label style="margin: 0;">Color Texto:</label>
+                        <input type="color" id="color-texto" value="#000000" oninput="actualizarColor()">
+                    </div>
+                    
+                    <div class="selector-color-linea" style="border: none;">
+                        <label style="margin: 0;">Color de delineado:</label>
+                        <input type="color" id="color-borde" value="#ffffff" oninput="actualizarBorde()">
+                    </div>
+                </div>
+
+                <!-- TAB: TU LOGO -->
+                <div id="tab-logo" class="contenido-tab">
+                    <div class="zona-drop" onclick="document.getElementById('input-imagen').click()">
+                        <p style="font-weight: bold; margin-bottom: 10px;">Arrastrar y soltar o Navegar en tu ordenador</p>
+                        <p style="font-size: 40px; color: #999;">📁</p>
+                    </div>
+                    <input type="file" id="input-imagen" accept="image/png, image/jpeg" style="display: none;" onchange="subirImagen(event)">
+                    <p class="nota-subida">Solo archivos *.JPG, *.PNG.<br>Se recomienda fondo transparente (PNG).</p>
+                    <button onclick="limpiarDiseno()" style="margin-top: 20px; padding: 10px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Diseño Actual</button>
+                </div>
+
+                <!-- ZONA DE COMPRA -->
+                <div class="zona-compra">
+                    <label style="color: #666; font-size: 0.9rem;">Talla:</label>
+                    <div class="tallas">
+                        <button class="btn-talla" onclick="seleccionarTalla(this, 'XS')">XS</button>
+                        <button class="btn-talla" onclick="seleccionarTalla(this, 'S')">S</button>
+                        <button class="btn-talla activa" onclick="seleccionarTalla(this, 'M')">M</button>
+                        <button class="btn-talla" onclick="seleccionarTalla(this, 'L')">L</button>
+                        <button class="btn-talla" onclick="seleccionarTalla(this, 'XL')">XL</button>
+                        <button class="btn-talla" onclick="seleccionarTalla(this, 'XXL')">XXL</button>
+                    </div>
+                    
+                    <div class="precio-final">S/ 45.00</div>
+                    
+                    <button class="btn-agregar" onclick="enviarPedidoWhatsApp()">ENVIAR DISEÑO A WHATSAPP</button>
+                </div>
+
             </div>
         </div>
 
-        <!-- ZONA DERECHA: HERRAMIENTAS -->
-        <div class="zona-controles">
-            
-            <!-- PESTAÑAS -->
-            <div class="tabs">
-                <div class="tab activo" onclick="cambiarTab('textos', this)">🔤 Textos</div>
-                <div class="tab" onclick="cambiarTab('logo', this)">📤 Tu Logo</div>
-                <div class="tab" onclick="cambiarTab('cliparts', this)">🎨 Cliparts</div>
-            </div>
+        <!-- --- INFORMACIÓN DEL PRODUCTO Y CUADRO DE TALLAS --- -->
+        <div class="info-adicional">
+            <h2>Información del producto</h2>
+            <p>Muéstrate original y con estilo con estos polos oversize de la mejor calidad. Nuestra prenda se caracteriza por su corte holgado, brindando máxima comodidad y adaptándose a las tendencias de la moda urbana juvenil.</p>
+            <p>Tú puedes personalizar tus polos de acuerdo a tus gustos y preferencias mediante la técnica de sublimación, lo que garantiza colores vivos y diseños duraderos que no se desgastan. Somos tu mejor opción en Huancavelica para vestir tu propia identidad.</p>
+            <ul>
+                <li>Estilo Oversize (Holgado).</li>
+                <li>Estampado por Sublimación Premium.</li>
+                <li>Prenda Unisex.</li>
+                <li>El regalo perfecto y personalizado.</li>
+            </ul>
 
-            <!-- CONTENIDO TAB: TEXTOS -->
-            <div id="tab-textos" class="contenido-tab activo">
-                <div class="control-grupo">
-                    <label>Ingresar texto:</label>
-                    <!-- Aquí capturamos lo que el usuario escribe en tiempo real -->
-                    <input type="text" id="input-texto" placeholder="Escribe aquí tu frase..." oninput="actualizarTexto()">
-                </div>
-                <div class="control-grupo">
-                    <label>Fuente (Tipo de Letra):</label>
-                    <select id="select-fuente" onchange="actualizarFuente()">
-                        <option value="'Segoe UI', sans-serif">Moderna</option>
-                        <option value="'Courier New', monospace">Máquina de Escribir</option>
-                        <option value="'Impact', sans-serif">Impacto (Gruesa)</option>
-                        <option value="'Comic Sans MS', cursive">Divertida</option>
-                    </select>
-                </div>
-                <div class="control-grupo">
-                    <label>Color del Texto:</label>
-                    <input type="color" id="color-texto" value="#000000" oninput="actualizarColor()">
-                </div>
-            </div>
-
-            <!-- CONTENIDO TAB: TU LOGO -->
-            <div id="tab-logo" class="contenido-tab">
-                <div class="control-grupo">
-                    <label>Sube tu imagen (JPG, PNG):</label>
-                    <!-- Herramienta para subir archivos locales -->
-                    <input type="file" id="input-imagen" accept="image/*" onchange="subirImagen(event)">
-                    <p style="font-size: 0.8rem; color: #777; margin-top: 10px;">Se recomienda imágenes con fondo transparente (PNG).</p>
-                </div>
-            </div>
-
-            <!-- CONTENIDO TAB: CLIPARTS -->
-            <div id="tab-cliparts" class="contenido-tab">
-                <label style="display: block; font-weight: bold; margin-bottom: 15px;">Selecciona una forma rápida:</label>
-                <div class="grid-cliparts">
-                    <!-- Usamos emojis como cliparts rápidos para el prototipo -->
-                    <button class="clipart-btn" onclick="aplicarClipart('👽')">👽</button>
-                    <button class="clipart-btn" onclick="aplicarClipart('🔥')">🔥</button>
-                    <button class="clipart-btn" onclick="aplicarClipart('🐾')">🐾</button>
-                    <button class="clipart-btn" onclick="aplicarClipart('⚽')">⚽</button>
-                    <button class="clipart-btn" onclick="aplicarClipart('🎮')">🎮</button>
-                    <button class="clipart-btn" onclick="aplicarClipart('💀')">💀</button>
-                </div>
-                <button onclick="limpiarDiseno()" style="margin-top: 20px; padding: 10px; width: 100%; border: 1px solid red; color: red; background: transparent; cursor: pointer; border-radius: 5px;">Quitar Diseño</button>
-            </div>
-
-            <!-- ZONA DE COMPRA Y WHATSAPP -->
-            <div class="zona-compra">
-                <label style="font-weight: bold; display: block; margin-bottom: 10px;">Talla:</label>
-                <div class="tallas">
-                    <button class="btn-talla" onclick="seleccionarTalla(this, 'S')">S</button>
-                    <button class="btn-talla activa" onclick="seleccionarTalla(this, 'M')">M</button>
-                    <button class="btn-talla" onclick="seleccionarTalla(this, 'L')">L</button>
-                    <button class="btn-talla" onclick="seleccionarTalla(this, 'XL')">XL</button>
-                </div>
-                
-                <div class="precio-final">S/ 45.00</div>
-                
-                <!-- Botón que envía la información recolectada -->
-                <button class="btn-whatsapp" onclick="enviarPedidoWhatsApp()">ENVIAR DISEÑO A WHATSAPP</button>
-            </div>
-
+            <h2 style="margin-top: 40px;">Cuadro de tallas</h2>
+            <p style="color: #555;">Todas las medidas son en centímetros. Coloca una de tus prendas sobre una superficie plana y compárala con esta tabla para elegir tu talla ideal.</p>
+            <!-- Tabla de tallas generada con HTML/CSS para mejor legibilidad -->
+            <table style="width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; text-align: center;">
+                <tr style="background-color: var(--verde-principal); color: white;">
+                    <th style="padding: 12px; border: 1px solid #ccc;">Medida / Talla</th>
+                    <th style="padding: 12px; border: 1px solid #ccc;">XS</th>
+                    <th style="padding: 12px; border: 1px solid #ccc;">S</th>
+                    <th style="padding: 12px; border: 1px solid #ccc;">M</th>
+                    <th style="padding: 12px; border: 1px solid #ccc;">L</th>
+                    <th style="padding: 12px; border: 1px solid #ccc;">XL</th>
+                    <th style="padding: 12px; border: 1px solid #ccc;">2XL</th>
+                </tr>
+                <tr>
+                    <td style="padding: 12px; border: 1px solid #ccc; font-weight: bold; background: #f9f9f9;">Pecho (Ancho)</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">49</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">51.5</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">56</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">60</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">66</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">71</td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px; border: 1px solid #ccc; font-weight: bold; background: #f9f9f9;">Largo</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">66.5</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">70</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">73.5</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">78</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">80.5</td>
+                    <td style="padding: 12px; border: 1px solid #ccc;">84</td>
+                </tr>
+            </table>
         </div>
     </div>
 
-    <!-- SCRIPT: LA LÓGICA INTERACTIVA -->
     <script>
         let tallaSeleccionada = "M";
+        let colorSeleccionado = "Blanco";
 
-        // Función para cambiar entre pestañas
         function cambiarTab(idTab, elemento) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('activo'));
             document.querySelectorAll('.contenido-tab').forEach(c => c.classList.remove('activo'));
-            
             elemento.classList.add('activo');
             document.getElementById('tab-' + idTab).classList.add('activo');
         }
 
-        // Función: Escribir en tiempo real
+        /* --- LÓGICA DEL TEXTO AVANZADO --- */
         function actualizarTexto() {
             let texto = document.getElementById('input-texto').value;
             document.getElementById('texto-polo').innerText = texto;
-            document.getElementById('imagen-polo').style.display = 'none'; // Oculta imagen si escribe texto
+            document.getElementById('imagen-polo').style.display = 'none'; 
         }
 
-        // Función: Cambiar tipo de letra
+        function actualizarTamano() {
+            let tamano = document.getElementById('input-tamano').value;
+            document.getElementById('texto-polo').style.fontSize = tamano + 'px';
+        }
+
         function actualizarFuente() {
             let fuente = document.getElementById('select-fuente').value;
             document.getElementById('texto-polo').style.fontFamily = fuente;
         }
 
-        // Función: Cambiar color
+        function actualizarEspaciado() {
+            let espacio = document.getElementById('rango-espaciado').value;
+            document.getElementById('texto-polo').style.letterSpacing = espacio + 'px';
+        }
+
         function actualizarColor() {
             let color = document.getElementById('color-texto').value;
             document.getElementById('texto-polo').style.color = color;
         }
 
-        // Función: Subir imagen desde la computadora/celular
+        function actualizarBorde() {
+            let colorBorde = document.getElementById('color-borde').value;
+            /* Efecto de borde (stroke) usando text-shadow */
+            document.getElementById('texto-polo').style.textShadow = 
+                `-1px -1px 0 ${colorBorde}, 1px -1px 0 ${colorBorde}, -1px 1px 0 ${colorBorde}, 1px 1px 0 ${colorBorde}`;
+        }
+
+        /* --- LÓGICA DE IMAGEN Y COLOR DE POLO --- */
         function subirImagen(event) {
             let archivo = event.target.files[0];
             if (archivo) {
@@ -332,21 +465,13 @@
                 lector.onload = function(e) {
                     document.getElementById('imagen-polo').src = e.target.result;
                     document.getElementById('imagen-polo').style.display = 'block';
-                    document.getElementById('texto-polo').innerText = ''; // Oculta el texto
+                    document.getElementById('texto-polo').innerText = ''; 
                     document.getElementById('input-texto').value = '';
                 }
                 lector.readAsDataURL(archivo);
             }
         }
 
-        // Función: Colocar clipart rápido
-        function aplicarClipart(emoji) {
-            document.getElementById('texto-polo').innerText = emoji;
-            document.getElementById('texto-polo').style.fontSize = '80px';
-            document.getElementById('imagen-polo').style.display = 'none';
-        }
-
-        // Función: Limpiar área de diseño
         function limpiarDiseno() {
             document.getElementById('texto-polo').innerText = '';
             document.getElementById('imagen-polo').style.display = 'none';
@@ -354,24 +479,45 @@
             document.getElementById('input-texto').value = '';
         }
 
-        // Función: Seleccionar Talla
+        function cambiarColorPolo(codigoHex, nombreColor, boton) {
+            // Quitar clase activa de todos
+            document.querySelectorAll('.btn-color').forEach(b => b.classList.remove('activo'));
+            boton.classList.add('activo');
+            
+            // Actualizar etiqueta
+            document.getElementById('nombre-color').innerText = nombreColor;
+            colorSeleccionado = nombreColor;
+
+            // Simular cambio de color en la imagen base usando CSS Blend Modes / Filtros
+            let imagenBase = document.getElementById('imagen-base-polo');
+            if(codigoHex === '#FFFFFF') {
+                imagenBase.style.filter = 'none';
+            } else if (codigoHex === '#000000') {
+                imagenBase.style.filter = 'brightness(0.2)';
+            } else {
+                // Aplicamos un truco visual para teñir la imagen
+                imagenBase.style.filter = `opacity(0.8) drop-shadow(0 0 0 ${codigoHex})`;
+            }
+        }
+
         function seleccionarTalla(boton, talla) {
             document.querySelectorAll('.btn-talla').forEach(b => b.classList.remove('activa'));
             boton.classList.add('activa');
             tallaSeleccionada = talla;
         }
 
-        // Función: Enviar a WhatsApp
         function enviarPedidoWhatsApp() {
             let textoEscrito = document.getElementById('input-texto').value;
-            let disenoInfo = textoEscrito ? `el texto: "${textoEscrito}"` : "una imagen/clipart personalizada";
+            let disenoInfo = textoEscrito ? `el texto: "${textoEscrito}"` : "una imagen personalizada";
             
-            let mensaje = `¡Hola Green Fashion! He utilizado el Diseñador Web y quiero un polo oversize.\n\n` +
+            let mensaje = `¡Hola Green Fashion! He utilizado el Creador Web y quiero hacer un pedido.\n\n` +
                           `📌 Detalles:\n` +
-                          `- Diseño: He colocado ${disenoInfo}.\n` +
+                          `- Prenda: Polo Oversize.\n` +
+                          `- Color base: ${colorSeleccionado}\n` +
                           `- Talla: ${tallaSeleccionada}\n` +
-                          `- Precio estimado: S/ 45.00\n\n` +
-                          `¿Cómo les envío la imagen final para coordinar el estampado?`;
+                          `- Diseño: He colocado ${disenoInfo}.\n` +
+                          `- Precio: S/ 45.00\n\n` +
+                          `¿Cómo les envío el diseño final para coordinar el estampado?`;
             
             let urlWsp = `https://wa.me/51927089187?text=${encodeURIComponent(mensaje)}`;
             window.open(urlWsp, '_blank');
