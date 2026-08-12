@@ -24,7 +24,6 @@
         .logo { font-size: 24px; font-weight: bold; color: var(--verde-principal); text-decoration: none; display: flex; align-items: center; gap: 10px; transition: transform 0.2s; }
         .logo:hover { transform: scale(1.05); }
         
-        /* Estilos de los enlaces de navegación */
         nav { display: flex; align-items: center; }
         nav a { margin-left: 20px; text-decoration: none; color: var(--texto-oscuro); font-weight: 600; transition: all 0.3s; }
         nav a:hover { color: var(--verde-principal); }
@@ -46,7 +45,7 @@
         .tarjeta-nosotros { flex: 1; min-width: 300px; background-color: var(--blanco); padding: 30px; border-radius: 15px; border-top: 5px solid var(--verde-principal); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .tarjeta-nosotros h3 { color: var(--verde-principal); font-size: 1.5rem; margin-bottom: 15px; }
         
-        /* --- BOTONES DE PERSONALIZACIÓN INTERACTIVOS --- */
+        /* --- BOTONES DE PERSONALIZACIÓN --- */
         .personalizacion { padding: 60px 20px; text-align: center; background-color: var(--blanco); }
         .opciones-diseno { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
         .opcion { background-color: var(--fondo-claro); padding: 12px 25px; border-radius: 30px; font-weight: bold; color: var(--verde-principal); border: 2px solid var(--verde-claro); cursor: pointer; transition: all 0.3s ease; }
@@ -54,24 +53,87 @@
         .opcion.activa { background-color: var(--verde-principal); color: var(--blanco); transform: scale(1.05); }
         
         #mensaje-accion { display: none; margin-top: 25px; padding: 20px; background-color: #E8F5E9; border-radius: 10px; color: var(--verde-oscuro); font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; border: 1px dashed var(--verde-principal); }
-        
-        /* --- REDES SOCIALES (FOOTER) --- */
-        footer { background-color: var(--texto-oscuro); color: var(--blanco); text-align: center; padding: 50px 20px; }
-        .redes-contenedor { display: flex; justify-content: center; gap: 20px; margin-top: 20px; margin-bottom: 30px; }
-        .btn-red-social { padding: 10px 25px; border-radius: 25px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; gap: 8px; transition: opacity 0.3s, transform 0.3s; }
-        .btn-red-social:hover { opacity: 0.8; transform: scale(1.05); }
-        .btn-whatsapp { background-color: #25D366; }
-        .btn-facebook { background-color: #1877F2; }
-        .btn-tiktok { background-color: #000000; border: 1px solid #333; }
 
         /* --- BOTÓN FLOTANTE WHATSAPP --- */
         .btn-flotante-wsp { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); text-decoration: none; z-index: 1000; transition: transform 0.3s; }
         .btn-flotante-wsp:hover { transform: scale(1.1); }
 
+        /* ========================================= */
+        /* --- NUEVO MEGA FOOTER INTERACTIVO --- */
+        /* ========================================= */
+        .footer-completo { 
+            background-color: var(--texto-oscuro); /* Color oscuro para mayor elegancia */
+            color: var(--blanco); 
+            padding: 60px 40px 20px; 
+            font-size: 0.95rem; 
+        }
+        
+        .footer-columnas { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+            gap: 40px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        .footer-col { 
+            flex: 1; 
+            min-width: 220px; 
+        }
+        
+        .footer-logo { 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: var(--verde-claro); 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 20px; 
+        }
+        
+        .footer-titulo { 
+            color: var(--blanco); 
+            font-size: 1.1rem; 
+            margin-bottom: 15px; 
+            font-weight: bold; 
+        }
+        
+        .footer-texto { 
+            color: #BBB; 
+            margin-bottom: 15px; 
+            line-height: 1.5; 
+        }
+        
+        /* Estilo y animación interactiva para los enlaces del footer */
+        .footer-link { 
+            display: flex; 
+            align-items: center;
+            gap: 8px;
+            color: #BBB; 
+            text-decoration: none; 
+            margin-bottom: 12px; 
+            transition: all 0.3s ease; 
+        }
+        
+        .footer-link:hover { 
+            color: var(--verde-claro); 
+            padding-left: 8px; /* Efecto de movimiento interactivo */
+        }
+        
+        .footer-bottom { 
+            text-align: center; 
+            border-top: 1px solid #444; 
+            margin-top: 40px; 
+            padding-top: 20px; 
+            color: #888; 
+            font-size: 0.85rem; 
+        }
+
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; }
             nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
             nav a { margin-left: 0; }
+            .footer-columnas { flex-direction: column; gap: 30px; }
         }
     </style>
 </head>
@@ -89,7 +151,6 @@
             <a href="#inicio">Inicio</a>
             <a href="productos.html">Catálogo</a>
             <a href="#nosotros">Nosotros</a>
-            <!-- NUEVO BOTÓN PARA EL DISEÑADOR -->
             <a href="creador.html" style="background-color: var(--verde-principal); color: white; padding: 8px 18px; border-radius: 25px; font-weight: bold; box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);">¡Diseña tu Polo!</a>
         </nav>
     </header>
@@ -141,20 +202,59 @@
         </div>
     </section>
 
-    <!-- Footer con Redes Sociales (Enlaces Reales) -->
-    <footer>
-        <h2 style="margin-bottom: 10px;">¡Únete a nuestra comunidad!</h2>
-        <p style="margin-bottom: 20px;">Síguenos para no perderte ninguna tendencia ni promoción.</p>
-        
-        <div class="redes-contenedor">
-            <a href="https://wa.me/51927089187" class="btn-red-social btn-whatsapp" target="_blank">WhatsApp</a>
-            <a href="https://www.facebook.com/profile.php?id=61593180631961" class="btn-red-social btn-facebook" target="_blank">Facebook</a>
-            <a href="https://www.tiktok.com/@green.fashion06?_r=1&_t=ZS-98pHxUI0q2f" class="btn-red-social btn-tiktok" target="_blank">TikTok</a>
-        </div>
+    <!-- =============================================== -->
+    <!-- NUEVO MEGA FOOTER INTERACTIVO -->
+    <!-- =============================================== -->
+    <footer class="footer-completo">
+        <div class="footer-columnas">
+            
+            <!-- Columna 1: Promesa de Marca -->
+            <div class="footer-col">
+                <a href="#inicio" class="footer-logo">🌿 Green Fashion</a>
+                <h4 class="footer-titulo">Nuestra promesa</h4>
+                <p class="footer-texto">Estamos comprometidos a hacer que te enamores de nuestros productos, los cuales personalizamos a pedido, cuidando hasta el más mínimo detalle.</p>
+                <p class="footer-texto">En caso por algún motivo no estuvieras 100% satisfecho con tu pedido, nos enfocaremos en brindarte una atención rápida para solucionarlo.</p>
+            </div>
 
-        <p style="margin-top: 30px; font-size: 0.9rem; color: #aaa;">&copy; 2026 Green Fashion. Todos los derechos reservados.</p>
+            <!-- Columna 2: Contacto y Redes Sociales -->
+            <div class="footer-col">
+                <h4 class="footer-titulo">Datos del Contacto</h4>
+                <a href="https://wa.me/51927089187" class="footer-link" target="_blank">📞 +51 927 089 187</a>
+                <a href="mailto:contacto@greenfashion.pe" class="footer-link">✉️ contacto@greenfashion.pe</a>
+                
+                <h4 class="footer-titulo" style="margin-top: 25px;">Síguenos</h4>
+                <a href="https://www.facebook.com/profile.php?id=61593180631961" class="footer-link" target="_blank">📘 Facebook</a>
+                <a href="https://www.tiktok.com/@green.fashion06?_r=1&_t=ZS-98pHxUI0q2f" class="footer-link" target="_blank">🎵 TikTok</a>
+            </div>
+
+            <!-- Columna 3: Ayuda -->
+            <div class="footer-col">
+                <h4 class="footer-titulo">Ayuda</h4>
+                <a href="#" class="footer-link">Preguntas Frecuentes</a>
+                <a href="#" class="footer-link">Seguimiento de Orden</a>
+                <a href="#" class="footer-link">¿Cómo funciona?</a>
+            </div>
+
+            <!-- Columna 4: Atención al Cliente -->
+            <div class="footer-col">
+                <h4 class="footer-titulo">Atención al Cliente</h4>
+                <a href="#" class="footer-link">Términos y Condiciones</a>
+                <a href="#" class="footer-link">Cambios y Devoluciones</a>
+                <a href="#" class="footer-link">Política de Envíos</a>
+                <a href="#" class="footer-link">📖 Libro de Reclamaciones</a>
+                <a href="https://wa.me/51927089187" class="footer-link" target="_blank">Contáctenos</a>
+                <a href="#" class="footer-link">Blog</a>
+                <a href="#" class="footer-link">Programa de afiliados</a>
+            </div>
+
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Green Fashion. Todos los derechos reservados. Huancavelica, Perú.</p>
+        </div>
     </footer>
 
+    <!-- SCRIPT DE LOS BOTONES DE OPCIONES -->
     <script>
         function seleccionarOpcion(boton, tema) {
             let botones = document.querySelectorAll('.opcion');
