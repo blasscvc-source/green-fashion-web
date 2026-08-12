@@ -51,24 +51,14 @@
 
         .disenador-layout { display: flex; flex-wrap: wrap; background: var(--blanco); box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; border: 1px solid var(--gris-borde); }
 
-        /* MOCKUP ÚNICO (MISMA IMAGEN EXACTA PARA TODOS LOS COLORES) */
+        /* MOCKUP CON TUS IMÁGENES EXACTAS */
         .zona-polo { flex: 1.2; min-width: 350px; padding: 30px; background-color: #FAFAFA; display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--gris-borde); }
+        .polo-mockup { position: relative; width: 100%; max-width: 400px; min-height: 400px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow: hidden; display: flex; justify-content: center; align-items: center;}
         
-        .polo-mockup { 
-            position: relative; width: 100%; max-width: 400px; min-height: 400px; 
-            border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; 
-            display: flex; justify-content: center; align-items: center;
-            background-color: #FFFFFF; /* Base blanca inicial */
-            transition: background-color 0.3s ease;
-        }
+        .polo-mockup img.base { width: 100%; height: 100%; object-fit: cover; display: block; }
         
-        /* La misma imagen exacta con efecto multiply para adaptarse al color de fondo perfectamente */
-        .polo-mockup img.base { 
-            width: 100%; height: 100%; object-fit: cover; display: block; 
-            mix-blend-mode: multiply; pointer-events: none; 
-        }
-        
-        .area-impresion { position: absolute; top: 22%; left: 27%; width: 46%; height: 48%; border: 1px dashed rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; z-index: 10; }
+        /* Área de impresión ajustada exactamente al recuadro punteado de tus imágenes */
+        .area-impresion { position: absolute; top: 22%; left: 27%; width: 46%; height: 48%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; overflow: hidden; z-index: 10; }
         .caja-textos { display: flex; flex-direction: column; justify-content: space-between; height: 100%; width: 100%; }
         .linea-texto { font-size: 22px; font-weight: bold; color: #000; text-align: center; word-break: break-word; line-height: 1.1;}
         #imagen-polo { max-width: 100%; max-height: 100%; display: none; object-fit: contain; }
@@ -176,11 +166,11 @@
         <div id="modulo-disenador">
             <div class="disenador-layout">
                 
-                <!-- ZONA IZQUIERDA: MISMA PLANTILLA BASE CON CAMBIO DE COLOR PERFECTO -->
+                <!-- ZONA IZQUIERDA: TUS IMÁGENES OFICIALES PARA CADA COLOR -->
                 <div class="zona-polo">
-                    <div class="polo-mockup" id="caja-color-polo" style="background-color: #FFFFFF;">
-                        <!-- Plantilla base idéntica con el modelo exacto que enviaste -->
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Polo" class="base">
+                    <div class="polo-mockup">
+                        <!-- Imagen base oficial predeterminada (Blanco) -->
+                        <img src="https://i.ibb.co/6y4B9x5/image-dae836.jpg" alt="Polo" class="base" id="imagen-base-polo">
                         
                         <div class="area-impresion">
                             <img id="imagen-polo" src="" alt="">
@@ -195,12 +185,18 @@
                     <div class="selector-colores">
                         <p>Colores: <span id="nombre-color">Blanco</span></p>
                         <div class="grid-colores">
-                            <button class="btn-color activo" style="background-color: #FFFFFF;" onclick="cambiarColorPolo('#FFFFFF', 'Blanco', this)"></button>
-                            <button class="btn-color" style="background-color: #222222;" onclick="cambiarColorPolo('#222222', 'Negro', this)"></button>
-                            <button class="btn-color" style="background-color: #1A237E;" onclick="cambiarColorPolo('#1A237E', 'Azul Marino', this)"></button>
-                            <button class="btn-color" style="background-color: #B71C1C;" onclick="cambiarColorPolo('#B71C1C', 'Rojo', this)"></button>
-                            <button class="btn-color" style="background-color: #4CAF50;" onclick="cambiarColorPolo('#4CAF50', 'Verde', this)"></button>
-                            <button class="btn-color" style="background-color: #F8BBD0;" onclick="cambiarColorPolo('#F8BBD0', 'Palo Rosa', this)"></button>
+                            <!-- Blanco -->
+                            <button class="btn-color activo" style="background-color: #FFFFFF;" onclick="cambiarColorPolo('https://i.ibb.co/6y4B9x5/image-dae836.jpg', 'Blanco', this)"></button>
+                            <!-- Negro -->
+                            <button class="btn-color" style="background-color: #000000;" onclick="cambiarColorPolo('https://i.ibb.co/5G5h28N/image-dae7bc.jpg', 'Negro', this)"></button>
+                            <!-- Azul Marino -->
+                            <button class="btn-color" style="background-color: #1A237E;" onclick="cambiarColorPolo('https://i.ibb.co/2d11g17/image-dae785.jpg', 'Azul Marino', this)"></button>
+                            <!-- Rojo -->
+                            <button class="btn-color" style="background-color: #B71C1C;" onclick="cambiarColorPolo('https://i.ibb.co/890y9fJ/image-dae75f.jpg', 'Rojo', this)"></button>
+                            <!-- Verde -->
+                            <button class="btn-color" style="background-color: #1B5E20;" onclick="cambiarColorPolo('https://i.ibb.co/5g5f7f2/image-dae49c.jpg', 'Verde', this)"></button>
+                            <!-- Palo Rosa -->
+                            <button class="btn-color" style="background-color: #F8BBD0;" onclick="cambiarColorPolo('https://i.ibb.co/3024808/image-dae47e.jpg', 'Palo Rosa', this)"></button>
                         </div>
                     </div>
                 </div>
@@ -209,7 +205,7 @@
                 <div class="zona-controles">
                     <input type="file" id="input-imagen" accept="image/png, image/jpeg" style="display: none;" onchange="subirFotografia(event)">
 
-                    <!-- TEXTOS -->
+                    <!-- TEXTOS (3 LÍNEAS) -->
                     <div id="herramienta-Textos" class="bloque-herramienta">
                         <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Escribe tus Frases:</p>
                         <div class="control-grupo">
@@ -225,7 +221,7 @@
                                 <option value="'Pacifico', cursive">Cursiva Elegante</option>
                                 <option value="'Bangers', cursive">Estilo Cómic</option>
                             </select>
-                            <input type="number" id="input-tamano" value="22" onchange="actualizarEstilosGlobales()" title="Tamaño (px)" style="width:70px;">
+                            <input type="number" id="input-tamano" value="20" onchange="actualizarEstilosGlobales()" title="Tamaño (px)" style="width:70px;">
                         </div>
 
                         <div class="selector-color-linea">
@@ -247,8 +243,6 @@
                             <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=200&q=80')"><img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=200&q=80"></div>
                             <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=200&q=80')"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=200&q=80"></div>
                             <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=200&q=80')"><img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=200&q=80"></div>
-                            <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&q=80')"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=200&q=80"></div>
-                            <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?w=200&q=80')"><img src="https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?w=200&q=80"></div>
                         </div>
                         <div class="btn-subir-propio" onclick="document.getElementById('input-imagen').click()">☁️ Sube tu propia ilustración</div>
                         <button onclick="limpiarDiseno()" style="padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Ilustración</button>
@@ -273,8 +267,6 @@
                             <div class="item-elemento" onclick="aplicarElemento('🔥')">🔥</div>
                             <div class="item-elemento" onclick="aplicarElemento('🐾')">🐾</div>
                             <div class="item-elemento" onclick="aplicarElemento('⚽')">⚽</div>
-                            <div class="item-elemento" onclick="aplicarElemento('🎮')">🎮</div>
-                            <div class="item-elemento" onclick="aplicarElemento('💀')">💀</div>
                         </div>
                         <div class="btn-subir-propio" onclick="document.getElementById('input-imagen').click()">☁️ Sube tu propio elemento</div>
                         <button onclick="limpiarDiseno()" style="padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Elemento</button>
@@ -387,25 +379,14 @@
             document.getElementById('caja-textos').style.display = 'flex';
         }
 
-        // Cambio de color manteniendo la misma foto exacta con tinte realista
-        function cambiarColorPolo(codigoHex, nombre, boton) {
+        // Cambio de color usando exclusivamente tus imágenes oficiales proporcionadas
+        function cambiarColorPolo(urlImagen, nombre, boton) {
             document.querySelectorAll('.btn-color').forEach(b => b.classList.remove('activo'));
             boton.classList.add('activo');
             document.getElementById('nombre-color').innerText = nombre;
             colorSel = nombre;
             
-            let caja = document.getElementById('caja-color-polo');
-            caja.style.backgroundColor = codigoHex;
-            
-            // Si es negro, ajustamos el brillo de la imagen para que la tela luzca oscura de forma realista
-            let imgBase = caja.querySelector('img.base');
-            if(codigoHex === '#222222') {
-                imgBase.style.filter = 'brightness(0.25) invert(1)';
-            } else if(codigoHex === '#FFFFFF') {
-                imgBase.style.filter = 'none';
-            } else {
-                imgBase.style.filter = 'brightness(0.85)';
-            }
+            document.getElementById('imagen-base-polo').src = urlImagen;
         }
 
         function seleccionarTalla(boton, talla) {
