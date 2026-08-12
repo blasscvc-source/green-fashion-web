@@ -18,33 +18,21 @@
         nav a:hover { color: var(--verde-principal); }
         .btn-cta-header { background-color: var(--verde-principal); color: var(--blanco); padding: 10px 20px; border-radius: 25px; font-weight: bold; }
 
-        /* AQUI ESTA LA SIMETRÍA EXACTA. CERO ESPACIOS BLANCOS HORRIBLES */
         .contenedor-detalle { 
             max-width: 1200px; 
             margin: 60px auto; 
             padding: 0 40px; 
             display: grid; 
-            grid-template-columns: 1fr 1fr; /* 50% y 50% exacto */
+            grid-template-columns: 1fr 1fr; 
             gap: 60px; 
             align-items: center; 
         }
         
-        .galeria-producto { 
-            width: 100%; 
-            border-radius: 10px; 
-            overflow: hidden; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
-            background: var(--fondo-gris);
-        }
-        .galeria-producto img { 
-            width: 100%; 
-            height: 100%;
-            object-fit: cover; 
-            display: block; 
-        }
+        .galeria-producto { width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border: 1px solid var(--borde); }
+        .galeria-producto img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         .info-producto { display: flex; flex-direction: column; justify-content: center; }
-        .info-producto h1 { font-size: 2.8rem; margin-bottom: 15px; line-height: 1.2; }
+        .info-producto h1 { font-size: 2.8rem; margin-bottom: 15px; line-height: 1.2; font-family: 'Lora', serif; }
         .precio { font-size: 2.2rem; color: var(--verde-principal); font-weight: bold; margin-bottom: 25px; }
         .descripcion { color: var(--texto-suave); font-size: 1.1rem; margin-bottom: 35px; line-height: 1.8; }
         
@@ -63,7 +51,6 @@
         .detalles-extra li { margin-bottom: 12px; }
 
         footer { background-color: var(--fondo-gris); padding: 40px 20px; text-align: center; border-top: 1px solid var(--borde); margin-top: 80px;}
-
         @media (max-width: 900px) { .contenedor-detalle { grid-template-columns: 1fr; gap: 40px; margin: 40px auto; padding: 0 20px;} header { flex-direction: column; gap: 15px; } }
     </style>
 </head>
@@ -75,25 +62,19 @@
             <a href="index.html">Inicio</a>
             <a href="catalogo.html">Catálogo</a>
             <a href="#">Nosotros</a>
-            <a href="personalizar.html" class="btn-cta-header">¿Qué te gustaría estampar?</a>
+            <a href="creador.html" class="btn-cta-header">¿Qué te gustaría estampar?</a>
         </nav>
     </header>
 
     <div class="contenedor-detalle">
-        
         <div class="galeria-producto">
-            <!-- La imagen cambiará sola por JS -->
-            <img id="img-producto" src="" alt="Producto">
+            <img id="img-producto" src="" alt="Cargando producto...">
         </div>
 
         <div class="info-producto">
-            <!-- El título y precio cambiarán solos por JS -->
             <h1 id="titulo-producto">Cargando producto...</h1>
             <div id="precio-producto" class="precio">--</div>
-            
-            <p id="desc-producto" class="descripcion">
-                Por favor espera mientras cargamos los detalles de este producto de alta calidad...
-            </p>
+            <p id="desc-producto" class="descripcion">Cargando los detalles del producto...</p>
 
             <div class="selector-tallas">
                 <p>Elige tu talla:</p>
@@ -108,7 +89,7 @@
             <button class="btn-comprar" onclick="comprarPorWhatsApp()">🛒 COMPRAR POR WHATSAPP</button>
 
             <div class="detalles-extra">
-                <h3 style="font-size: 1.3rem; margin-bottom: 20px;">Características del producto</h3>
+                <h3 style="font-size: 1.3rem; margin-bottom: 20px; font-family: 'Lora', serif;">Características</h3>
                 <ul>
                     <li><strong>Corte:</strong> Oversize (Holgado y moderno)</li>
                     <li><strong>Técnica:</strong> Sublimación Tacto Cero</li>
@@ -123,47 +104,43 @@
         <p>&copy; 2026 Green Fashion. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- ESTA ES LA MAGIA QUE HACE QUE NO TENGAS QUE CREAR MIL ARCHIVOS -->
     <script>
-        // 1. BASE DE DATOS DE TUS POLOS
         const baseDeDatos = {
             'peruano1': {
-                titulo: 'Polo Estilo Peruano Clásico',
+                titulo: 'Polo Estilo Peruano Blanco',
                 precio: 'S/ 45.00',
-                img: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&q=80',
-                desc: 'Lleva el orgullo en tu pecho con nuestra línea exclusiva de polos con diseños peruanos. Prenda fabricada con un estilo oversize holgado que garantiza frescura y máxima comodidad. Estampado en sublimación de alta resistencia.'
+                img: 'https://i.ibb.co/6y4B9x5/image-dae836.jpg',
+                desc: 'Lleva el orgullo en tu pecho con nuestra línea exclusiva de polos blancos con diseños peruanos. Estampado en sublimación de alta resistencia que nunca pierde color.'
             },
             'peruano2': {
-                titulo: 'Polo Frases Peruanas',
+                titulo: 'Polo Estilo Peruano Negro',
                 precio: 'S/ 45.00',
-                img: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&q=80',
-                desc: 'Las mejores frases criollas estampadas en un polo de altísima calidad. Perfecto para regalar o lucir tu estilo urbano con identidad nacional.'
+                img: 'https://i.ibb.co/5G5h28N/image-dae7bc.jpg',
+                desc: 'Luce elegante y casual con este diseño peruano sobre polo negro oversize. Perfecto para lucir tu estilo urbano con identidad.'
             },
             'cumple1': {
-                titulo: 'Polo "No tengo 30"',
+                titulo: 'Polo "No tengo 30" (Azul)',
                 precio: 'S/ 45.00',
-                img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80',
-                desc: 'El regalo de cumpleaños definitivo. Saca una sonrisa con este polo divertido, estampado con tacto cero para que sea súper suave y cómodo de usar en cualquier fiesta.'
+                img: 'https://i.ibb.co/2d11g17/image-dae785.jpg',
+                desc: 'El regalo de cumpleaños definitivo. Saca una sonrisa con este polo azul divertido, estampado para que sea súper suave y cómodo de usar en cualquier fiesta.'
             },
             'cumple2': {
-                titulo: 'Polo "La vida comienza a los..."',
+                titulo: 'Polo "La vida comienza..." (Rojo)',
                 precio: 'S/ 45.00',
-                img: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800&q=80',
-                desc: 'Celebra esa edad especial con este diseño increíble. Personalizable con la edad que necesites al momento de confirmar por WhatsApp.'
+                img: 'https://i.ibb.co/890y9fJ/image-dae75f.jpg',
+                desc: 'Celebra esa edad especial con este polo rojo vibrante. Diseño increíble y duradero.'
             },
             'pareja1': {
-                titulo: 'Dúo Polos "King & Queen"',
+                titulo: 'Dúo Polos Parejas',
                 precio: 'S/ 85.00 (El par)',
                 img: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=800&q=80',
-                desc: 'Combina tu estilo con tu persona favorita. Llevate dos prendas oversize de excelente calidad, con diseño emparejado ideal para aniversarios o regalos.'
+                desc: 'Combina tu estilo con tu persona favorita. Llévate dos prendas oversize de excelente calidad, con diseño emparejado ideal para aniversarios o regalos.'
             }
         };
 
-        // 2. LEER QUÉ POLO SELECCIONÓ EL CLIENTE EN EL CATÁLOGO
         const parametrosURL = new URLSearchParams(window.location.search);
         const idPolo = parametrosURL.get('id');
 
-        // 3. REEMPLAZAR LA INFORMACIÓN EN LA PÁGINA
         if(idPolo && baseDeDatos[idPolo]) {
             let producto = baseDeDatos[idPolo];
             document.getElementById('titulo-producto').innerText = producto.titulo;
@@ -171,15 +148,10 @@
             document.getElementById('img-producto').src = producto.img;
             document.getElementById('desc-producto').innerText = producto.desc;
             
-            // Guardar el título para enviarlo por WhatsApp
             window.tituloActual = producto.titulo;
             window.precioActual = producto.precio;
-        } else {
-            document.getElementById('titulo-producto').innerText = 'Polo no encontrado';
-            document.getElementById('desc-producto').innerText = 'Por favor, regresa al catálogo y elige un producto válido.';
         }
 
-        // 4. LÓGICA DE TALLAS Y COMPRA
         let tallaSeleccionada = "M";
 
         function seleccionarTalla(boton, talla) {
@@ -191,7 +163,7 @@
         function comprarPorWhatsApp() {
             let nombre = window.tituloActual || "Polo de Catálogo";
             let precio = window.precioActual || "Consultar";
-            let mensaje = `¡Hola Green Fashion! Quiero comprar un producto de su catálogo.\n\n📌 Detalles:\n- Producto: ${nombre}\n- Talla: ${tallaSeleccionada}\n- Precio: ${precio}\n\n¿Cuáles son los métodos de pago y envío?`;
+            let mensaje = `¡Hola Green Fashion! Quiero comprar un producto del catálogo.\n\n📌 Detalles:\n- Producto: ${nombre}\n- Talla: ${tallaSeleccionada}\n- Precio: ${precio}\n\n¿Cómo coordino el pago?`;
             
             let url = `https://wa.me/51927089187?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
