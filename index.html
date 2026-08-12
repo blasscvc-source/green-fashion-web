@@ -13,7 +13,6 @@
             --texto-oscuro: #333333;
             --fondo-claro: #FAFAFA;
             --gris-borde: #DDDDDD;
-            --rojo-alerta: #F44336;
             --naranja-carrito: #FF9800;
         }
 
@@ -46,48 +45,31 @@
         .tarjeta-nosotros { flex: 1; min-width: 300px; background-color: var(--blanco); padding: 30px; border-radius: 15px; border-top: 5px solid var(--verde-principal); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .tarjeta-nosotros h3 { color: var(--verde-principal); margin-bottom: 15px; }
 
-        /* --- MENÚ DE OPCIONES --- */
-        .personalizacion { padding: 60px 20px; text-align: center; background-color: var(--blanco); }
+        /* --- MENÚ DE OPCIONES PRINCIPAL --- */
+        .personalizacion { padding: 60px 20px 20px; text-align: center; background-color: var(--blanco); }
         .opciones-diseno { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
         .opcion { background-color: var(--fondo-claro); padding: 12px 25px; border-radius: 30px; font-weight: bold; color: var(--verde-principal); border: 2px solid var(--verde-claro); cursor: pointer; transition: all 0.3s ease; }
         .opcion:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2); }
         .opcion.activa { background-color: var(--verde-principal); color: var(--blanco); transform: scale(1.05); }
 
         /* ========================================= */
-        /* --- DISEÑADOR INTERACTIVO --- */
+        /* --- DISEÑADOR INTERACTIVO LIMPIO --- */
         /* ========================================= */
-        #modulo-disenador { display: none; max-width: 1100px; margin: 40px auto 0; text-align: left; animation: deslizarAbajo 0.5s ease forwards; }
+        #modulo-disenador { display: none; max-width: 1100px; margin: 20px auto 40px; text-align: left; animation: deslizarAbajo 0.5s ease forwards; }
         @keyframes deslizarAbajo { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
         .disenador-layout { display: flex; flex-wrap: wrap; background: var(--blanco); box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; border: 1px solid var(--gris-borde); }
 
-        /* MOCKUP POLO (SOLUCIÓN COLOR REALISTA) */
+        /* MOCKUP POLO */
         .zona-polo { flex: 1.2; min-width: 350px; padding: 30px; background-color: #E8E8E8; display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--gris-borde); }
-        
-        .polo-mockup { 
-            position: relative; width: 100%; max-width: 400px; 
-            /* El color de fondo de esta caja es el que teñirá el polo */
-            background-color: #FFFFFF; 
-            border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: background-color 0.3s ease;
-        }
-        
-        /* Usamos una imagen de polo con fondo transparente y aplicamos multiply para que tome el color de la caja base */
+        .polo-mockup { position: relative; width: 100%; max-width: 400px; background-color: #FFFFFF; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; transition: background-color 0.3s ease; }
         .polo-mockup img.base { width: 100%; display: block; mix-blend-mode: multiply; pointer-events: none; }
         
-        .area-impresion {
-            position: absolute; top: 25%; left: 28%; width: 44%; height: 45%;
-            border: 1px dashed rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; z-index: 10;
-        }
-        
-        /* 3 Bloques de texto separados */
+        .area-impresion { position: absolute; top: 25%; left: 28%; width: 44%; height: 45%; border: 1px dashed rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; z-index: 10; }
         .caja-textos { display: flex; flex-direction: column; justify-content: space-between; height: 100%; width: 100%; }
         .linea-texto { font-size: 24px; font-weight: bold; color: #000; text-align: center; word-break: break-word; transition: all 0.2s ease; line-height: 1.1;}
-        
         #imagen-polo { max-width: 100%; max-height: 100%; display: none; object-fit: contain; }
 
-        /* Colores */
         .selector-colores { margin-top: 25px; width: 100%; max-width: 400px; text-align: left;}
         .selector-colores p { font-weight: bold; margin-bottom: 10px; font-size: 0.95rem; }
         .grid-colores { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -95,25 +77,24 @@
         .btn-color:hover { transform: scale(1.1); }
         .btn-color.activo { border: 3px solid var(--texto-oscuro); box-shadow: 0 0 5px rgba(0,0,0,0.3); }
 
-        /* CONTROLES Y PESTAÑAS */
+        /* ZONA CONTROLES (SIN PESTAÑAS) */
         .zona-controles { flex: 1; min-width: 350px; background-color: var(--blanco); display: flex; flex-direction: column; }
-        .tabs { display: flex; border-bottom: 1px solid var(--gris-borde); background: var(--fondo-claro);}
-        .tab { flex: 1; padding: 15px 5px; text-align: center; font-weight: bold; cursor: pointer; color: #666; font-size: 0.85rem; border-bottom: 3px solid transparent; transition: 0.3s; }
-        .tab.activo { color: var(--rojo-alerta); border-bottom-color: var(--rojo-alerta); background: var(--blanco);}
-        .contenido-tab { display: none; padding: 25px; }
-        .contenido-tab.activo { display: block; animation: aparecer 0.3s ease; }
         
-        /* Formularios */
-        .control-grupo { margin-bottom: 15px; }
+        /* Aquí ocultamos y mostramos los bloques según el botón verde seleccionado */
+        .bloque-herramienta { display: none; padding: 30px 25px; border-bottom: 1px solid var(--gris-borde);}
+        .bloque-herramienta.activo { display: block; animation: aparecer 0.3s ease; }
+        @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* Formularios Textos */
+        .control-grupo { margin-bottom: 15px; text-align: left; }
         .control-grupo label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; color: #444; }
         .fila-input { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
         .fila-input input[type="text"] { flex: 1; padding: 10px; border: 1px solid var(--gris-borde); border-radius: 5px; font-size: 0.95rem; }
         select, input[type="number"] { padding: 10px; border: 1px solid var(--gris-borde); border-radius: 5px; font-size: 0.95rem; width: 100%;}
-        
         .selector-color-linea { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px dashed var(--gris-borde); padding-bottom: 10px;}
         input[type="color"] { width: 45px; height: 35px; border: 1px solid #ccc; cursor: pointer; border-radius: 5px;}
 
-        /* Galerias (Ilustraciones y Elementos) */
+        /* Galerias */
         .grid-galeria-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
         .item-galeria { border: 1px solid var(--gris-borde); border-radius: 5px; cursor: pointer; transition: 0.2s; padding: 5px; background: #fff;}
         .item-galeria:hover { border-color: var(--verde-principal); transform: scale(1.05); }
@@ -123,8 +104,8 @@
 
         .zona-drop { border: 2px dashed #bbb; padding: 40px 20px; text-align: center; background: #eee; border-radius: 10px; cursor: pointer; margin-bottom: 15px; }
 
-        /* COMPRA (Carrito y WhatsApp) */
-        .zona-compra { padding: 25px; background: var(--fondo-claro); border-top: 1px solid var(--gris-borde); margin-top: auto; }
+        /* COMPRA */
+        .zona-compra { padding: 25px; background: var(--fondo-claro); margin-top: auto; text-align: left;}
         .tallas { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;}
         .btn-talla { width: 40px; height: 40px; border: 1px solid var(--gris-borde); border-radius: 5px; background: var(--blanco); cursor: pointer; font-weight: bold; color: #555; transition: 0.2s; }
         .btn-talla.activa { border: 2px solid var(--texto-oscuro); color: var(--texto-oscuro); }
@@ -133,31 +114,26 @@
         .botones-accion { display: flex; gap: 10px; flex-direction: column; }
         .btn-carrito { background: var(--naranja-carrito); color: white; padding: 12px; font-size: 1.1rem; font-weight: bold; border-radius: 5px; border: none; cursor: pointer; transition: 0.3s; }
         .btn-carrito:hover { background: #E68A00; }
-        .btn-wsp-pedido { background: #25D366; color: white; padding: 12px; font-size: 1.1rem; font-weight: bold; border-radius: 5px; border: none; cursor: pointer; transition: 0.3s; }
-        .btn-wsp-pedido:hover { background: #1EBE55; }
 
         /* --- FOOTER --- */
         .footer-completo { background-color: var(--texto-oscuro); color: var(--blanco); padding: 60px 40px 20px; font-size: 0.95rem; }
         .footer-columnas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; max-width: 1200px; margin: 0 auto; }
         .footer-col { flex: 1; min-width: 220px; }
         .footer-logo { font-size: 24px; font-weight: bold; color: var(--verde-claro); text-decoration: none; display: block; margin-bottom: 20px; }
-        .footer-titulo { color: var(--blanco); font-size: 1.1rem; margin-bottom: 15px; font-weight: bold; }
         .footer-link { display: flex; align-items: center; gap: 8px; color: #BBB; text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
         .footer-link:hover { color: var(--verde-claro); padding-left: 8px; }
-
-        .btn-flotante-wsp { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); text-decoration: none; z-index: 1000; transition: transform 0.3s; }
-        .btn-flotante-wsp:hover { transform: scale(1.1); }
 
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px; }
             nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .disenador-layout { flex-direction: column; }
+            .zona-polo { border-right: none; border-bottom: 1px solid var(--gris-borde); }
+            .footer-columnas { flex-direction: column; gap: 30px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Oswald:wght@700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <a href="https://wa.me/51927089187?text=Hola%20Green%20Fashion" class="btn-flotante-wsp" target="_blank">📱</a>
 
     <header>
         <a href="#inicio" class="logo">🌿 Green Fashion</a>
@@ -180,31 +156,43 @@
         </div>
     </section>
 
+    <section id="nosotros" class="nosotros">
+        <div class="nosotros-contenedor">
+            <div class="tarjeta-nosotros">
+                <h3>Nuestra Misión</h3>
+                <p>Somos una empresa dedicada al diseño y personalización de polos de tipo oversize. Buscamos combinar comodidad, creatividad y calidad, permitiendo a jóvenes de 18 a 25 años expresar su identidad mediante una experiencia de compra cercana e innovadora.</p>
+            </div>
+            <div class="tarjeta-nosotros">
+                <h3>Nuestra Visión</h3>
+                <p>Ser una empresa referente de moda personalizada en el mercado juvenil peruano. Nos reconocen por la creatividad, calidad e innovación, logrando posicionarnos como la opción preferida por los jóvenes para expresar su estilo a través de prendas únicas.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- MENÚ PRINCIPAL DE ESTAMPADOS -->
     <section id="personaliza" class="personalizacion">
         <h2>¿Qué te gustaría estampar?</h2>
         <p style="color: #555; margin-bottom: 25px;">Haz clic en la opción que más te guste para iniciar tu diseño:</p>
         
         <div class="opciones-diseno">
-            <div class="opcion" onclick="abrirDisenador(this, 'Textos')">Tus Frases Favoritas</div>
-            <div class="opcion" onclick="abrirDisenador(this, 'Ilustraciones')">Ilustraciones Únicas</div>
-            <div class="opcion" onclick="abrirDisenador(this, 'Fotos')">Fotografías e Imágenes</div>
-            <div class="opcion" onclick="abrirDisenador(this, 'Elementos')">Elementos Gráficos</div>
+            <div class="opcion" onclick="activarHerramienta(this, 'Textos')">Tus Frases Favoritas</div>
+            <div class="opcion" onclick="activarHerramienta(this, 'Ilustraciones')">Ilustraciones Únicas</div>
+            <div class="opcion" onclick="activarHerramienta(this, 'Fotos')">Fotografías e Imágenes</div>
+            <div class="opcion" onclick="activarHerramienta(this, 'Elementos')">Elementos Gráficos</div>
         </div>
 
-        <!-- MÓDULO DISEÑADOR -->
+        <!-- MÓDULO DISEÑADOR (SIN PESTAÑAS, DIRECTO A LA HERRAMIENTA) -->
         <div id="modulo-disenador">
             <div class="disenador-layout">
                 
                 <!-- IZQUIERDA: POLO CON COLOR REALISTA -->
                 <div class="zona-polo">
                     <div class="polo-mockup" id="caja-color-polo">
-                        <!-- Imagen con fondo transparente -->
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blank_white_t-shirt.svg/512px-Blank_white_t-shirt.svg.png" alt="Polo" class="base">
+                        <!-- IMAGEN DEL POLO TRANSPARENTE, ¡FUNCIONA PERFECTO! -->
+                        <img src="https://images.vexels.com/media/users/3/205626/isolated/preview/26e632db228695000787eebbbd298ea5-camiseta-blanca-plana-by-vexels.png" alt="Polo" class="base">
                         
                         <div class="area-impresion">
                             <img id="imagen-polo" src="" alt="">
-                            <!-- Textos divididos en 3 partes -->
                             <div class="caja-textos" id="caja-textos">
                                 <div class="linea-texto" id="txt-sup"></div>
                                 <div class="linea-texto" id="txt-med"></div>
@@ -226,19 +214,13 @@
                     </div>
                 </div>
 
-                <!-- DERECHA: PESTAÑAS Y CONTROLES -->
+                <!-- DERECHA: SOLO LA HERRAMIENTA SELECCIONADA -->
                 <div class="zona-controles">
-                    <div class="tabs">
-                        <div class="tab" id="btn-tab-Textos" onclick="cambiarTab('Textos', this)">🔤 Textos</div>
-                        <div class="tab" id="btn-tab-Ilustraciones" onclick="cambiarTab('Ilustraciones', this)">🎨 Ilustraciones</div>
-                        <div class="tab" id="btn-tab-Fotos" onclick="cambiarTab('Fotos', this)">📸 Fotos</div>
-                        <div class="tab" id="btn-tab-Elementos" onclick="cambiarTab('Elementos', this)">⭐ Elementos</div>
-                    </div>
-
-                    <!-- TAB: TEXTOS (3 líneas) -->
-                    <div id="tab-Textos" class="contenido-tab">
+                    
+                    <!-- BLOQUE TEXTOS -->
+                    <div id="herramienta-Textos" class="bloque-herramienta">
+                        <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Textos (Superior, Medio, Inferior):</p>
                         <div class="control-grupo">
-                            <label>Textos (Superior, Medio, Inferior):</label>
                             <div class="fila-input"><input type="text" id="in-sup" placeholder="Línea Superior..." oninput="actualizarTextos()"></div>
                             <div class="fila-input"><input type="text" id="in-med" placeholder="Línea Central..." oninput="actualizarTextos()"></div>
                             <div class="fila-input"><input type="text" id="in-inf" placeholder="Línea Inferior..." oninput="actualizarTextos()"></div>
@@ -265,11 +247,10 @@
                         <button onclick="limpiarDiseno()" style="padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Diseño</button>
                     </div>
 
-                    <!-- TAB: ILUSTRACIONES (Galería predeterminada) -->
-                    <div id="tab-Ilustraciones" class="contenido-tab">
-                        <p style="margin-bottom: 10px; font-size: 0.9rem; color: #555;">Selecciona una ilustración lista para estampar:</p>
+                    <!-- BLOQUE ILUSTRACIONES -->
+                    <div id="herramienta-Ilustraciones" class="bloque-herramienta">
+                        <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Selecciona una ilustración:</p>
                         <div class="grid-galeria-mini">
-                            <!-- Diseños genéricos predefinidos -->
                             <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=200&q=80')"><img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=200&q=80"></div>
                             <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=200&q=80')"><img src="https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=200&q=80"></div>
                             <div class="item-galeria" onclick="aplicarImagen('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=200&q=80')"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=200&q=80"></div>
@@ -280,9 +261,9 @@
                         <button onclick="limpiarDiseno()" style="margin-top: 15px; padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Ilustración</button>
                     </div>
 
-                    <!-- TAB: FOTOS (Subir archivo) -->
-                    <div id="tab-Fotos" class="contenido-tab">
-                        <p style="margin-bottom: 15px; color: #555; font-size: 0.9rem;">Sube tu fotografía o diseño propio desde tu dispositivo.</p>
+                    <!-- BLOQUE FOTOGRAFÍAS -->
+                    <div id="herramienta-Fotos" class="bloque-herramienta">
+                        <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Sube tu fotografía:</p>
                         <div class="zona-drop" onclick="document.getElementById('input-imagen').click()">
                             <p style="font-weight: bold; margin-bottom: 10px;">Clic aquí para subir foto</p>
                             <p style="font-size: 40px; color: #999;">📁</p>
@@ -291,9 +272,9 @@
                         <button onclick="limpiarDiseno()" style="margin-top: 10px; padding: 8px; width: 100%; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 5px;">Quitar Foto</button>
                     </div>
 
-                    <!-- TAB: ELEMENTOS GRÁFICOS (Iconos predeterminados) -->
-                    <div id="tab-Elementos" class="contenido-tab">
-                        <p style="margin-bottom: 10px; font-size: 0.9rem; color: #555;">Decora tu polo con estos gráficos rápidos:</p>
+                    <!-- BLOQUE ELEMENTOS GRÁFICOS -->
+                    <div id="herramienta-Elementos" class="bloque-herramienta">
+                        <p style="font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; font-size: 1.1rem;">Añade un gráfico rápido:</p>
                         <div class="grid-galeria-mini">
                             <div class="item-elemento" onclick="aplicarElemento('👽')">👽</div>
                             <div class="item-elemento" onclick="aplicarElemento('🔥')">🔥</div>
@@ -318,9 +299,7 @@
                         <div class="precio-final">S/ 45.00</div>
                         
                         <div class="botones-accion">
-                            <!-- Nuevo Botón Agregar al Carrito -->
                             <button class="btn-carrito" onclick="agregarAlCarrito()">🛒 AGREGAR AL CARRITO</button>
-                            <button class="btn-wsp-pedido" onclick="enviarPedidoWhatsApp()">📲 COMPRAR POR WHATSAPP</button>
                         </div>
                     </div>
                 </div>
@@ -340,7 +319,6 @@
                 <p style="color:var(--blanco); font-weight:bold; margin-bottom:15px;">Datos del Contacto</p>
                 <a href="https://wa.me/51927089187" class="footer-link" target="_blank">📞 +51 927 089 187</a>
                 <a href="mailto:contacto@greenfashion.pe" class="footer-link">✉️ contacto@greenfashion.pe</a>
-                
                 <p style="color:var(--blanco); font-weight:bold; margin-top:20px; margin-bottom:10px;">Síguenos</p>
                 <a href="https://www.facebook.com/profile.php?id=61593180631961" class="footer-link" target="_blank">📘 Facebook</a>
                 <a href="https://www.tiktok.com/@green.fashion06?_r=1&_t=ZS-98pHxUI0q2f" class="footer-link" target="_blank">🎵 TikTok</a>
@@ -355,30 +333,30 @@
         </div>
     </footer>
 
-    <!-- SCRIPT LOGICO -->
+    <!-- SCRIPT DE LÓGICA -->
     <script>
         let tallaSel = "M";
         let colorSel = "Blanco";
 
-        // 1. Abrir Diseñador y elegir pestaña
-        function abrirDisenador(botonPill, temaPestana) {
+        // Lógica de limpieza total de interfaz: activa el bloque y resalta el botón
+        function activarHerramienta(botonPill, nombreHerramienta) {
+            // 1. Resaltar botón seleccionado
             document.querySelectorAll('.opcion').forEach(btn => btn.classList.remove('activa'));
             botonPill.classList.add('activa');
             
-            document.getElementById('modulo-disenador').style.display = 'block';
-            cambiarTab(temaPestana, document.getElementById('btn-tab-' + temaPestana));
+            // 2. Mostrar la herramienta correspondiente y esconder las demás
+            document.querySelectorAll('.bloque-herramienta').forEach(bloque => {
+                bloque.classList.remove('activo');
+            });
+            document.getElementById('herramienta-' + nombreHerramienta).classList.add('activo');
             
-            setTimeout(() => { document.getElementById('modulo-disenador').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+            // 3. Mostrar el diseñador y bajar
+            let disenador = document.getElementById('modulo-disenador');
+            disenador.style.display = 'block';
+            setTimeout(() => { disenador.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         }
 
-        function cambiarTab(idTab, elementoTab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('activo'));
-            document.querySelectorAll('.contenido-tab').forEach(c => c.classList.remove('activo'));
-            elementoTab.classList.add('activo');
-            document.getElementById('tab-' + idTab).classList.add('activo');
-        }
-
-        // 2. Lógica de Textos (3 Líneas)
+        // Lógica de Textos (3 Líneas)
         function actualizarTextos() {
             document.getElementById('txt-sup').innerText = document.getElementById('in-sup').value;
             document.getElementById('txt-med').innerText = document.getElementById('in-med').value;
@@ -402,8 +380,9 @@
             });
         }
 
-        // 3. Lógica de Imágenes (Ilustraciones Predefinidas y Subir Foto)
+        // Lógica de Imágenes (Ilustraciones y Subir Foto)
         function aplicarImagen(url) {
+            limpiarDiseno();
             document.getElementById('imagen-polo').src = url;
             document.getElementById('imagen-polo').style.display = 'block';
             document.getElementById('caja-textos').style.display = 'none';
@@ -418,7 +397,7 @@
             }
         }
 
-        // 4. Lógica de Elementos Gráficos
+        // Lógica de Elementos Gráficos
         function aplicarElemento(emoji) {
             limpiarDiseno();
             document.getElementById('txt-med').innerText = emoji;
@@ -438,7 +417,7 @@
             document.getElementById('caja-textos').style.display = 'flex';
         }
 
-        // 5. Color del Polo (Solo cambia el fondo de la caja, el polo transparente se tiñe)
+        // Lógica Color Realista
         function cambiarColorPolo(codigoHex, nombre, boton) {
             document.querySelectorAll('.btn-color').forEach(b => b.classList.remove('activo'));
             boton.classList.add('activo');
@@ -453,14 +432,9 @@
             tallaSel = talla;
         }
 
-        // 6. Botones de Acción
         function agregarAlCarrito() {
-            alert('¡Producto agregado al carrito exitosamente!\n\n(Nota: Como la tienda está en modo catálogo, finaliza tu compra enviando el diseño por WhatsApp).');
-        }
-
-        function enviarPedidoWhatsApp() {
             let texto = document.getElementById('in-med').value || "Diseño Gráfico";
-            let msj = `¡Hola Green Fashion! He usado la web y quiero un polo.\n\n📌 Detalles:\n- Prenda: Polo Oversize.\n- Color: ${colorSel}\n- Talla: ${tallaSel}\n- Precio: S/ 45.00\n\n¿A dónde envío la captura de mi diseño?`;
+            let msj = `¡Hola Green Fashion! He configurado mi polo en su página y quiero agregarlo a mi pedido.\n\n📌 Detalles:\n- Prenda: Polo Oversize.\n- Color: ${colorSel}\n- Talla: ${tallaSel}\n- Precio: S/ 45.00`;
             window.open(`https://wa.me/51927089187?text=${encodeURIComponent(msj)}`, '_blank');
         }
     </script>
