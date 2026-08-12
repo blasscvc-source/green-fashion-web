@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto | Green Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-principal: #2E7D32;
+            --verde-claro: #4CAF50;
+            --verde-oscuro: #1B5E20;
+            --texto-oscuro: #333333;
+            --texto-suave: #555555;
+            --blanco: #FFFFFF;
+            --fondo-gris: #F9F9F9;
+            --borde: #E0E0E0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { color: var(--texto-oscuro); background-color: var(--blanco); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Lora', serif; color: var(--texto-oscuro); font-weight: 600; }
+
+        /* HEADER */
+        header { background-color: var(--blanco); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--borde); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--texto-oscuro); text-decoration: none; font-family: 'Lora', serif; }
+        nav { display: flex; align-items: center; gap: 25px; }
+        nav a { text-decoration: none; color: var(--texto-oscuro); font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
+        nav a:hover { color: var(--verde-principal); }
+        .btn-cta-header { background-color: var(--verde-principal); color: var(--blanco); padding: 10px 20px; border-radius: 25px; font-weight: bold; }
+
+        /* DETALLE DEL PRODUCTO */
+        .contenedor-detalle { max-width: 1100px; margin: 60px auto; padding: 0 20px; display: flex; gap: 50px; align-items: flex-start; }
+        
+        .galeria-producto { flex: 1; background: var(--fondo-gris); border-radius: 10px; padding: 20px; text-align: center; border: 1px solid var(--borde); }
+        .galeria-producto img { width: 100%; max-width: 450px; border-radius: 8px; object-fit: cover; }
+
+        .info-producto { flex: 1; display: flex; flex-direction: column; }
+        .info-producto h1 { font-size: 2.5rem; margin-bottom: 15px; line-height: 1.2; }
+        .precio { font-size: 2rem; color: var(--verde-principal); font-weight: bold; margin-bottom: 20px; }
+        
+        .descripcion { color: var(--texto-suave); font-size: 1.05rem; margin-bottom: 30px; line-height: 1.8; }
+        
+        .selector-tallas { margin-bottom: 30px; }
+        .selector-tallas p { font-weight: bold; margin-bottom: 10px; }
+        .tallas-grid { display: flex; gap: 10px; }
+        .btn-talla { width: 45px; height: 45px; border: 1px solid var(--borde); background: var(--blanco); border-radius: 5px; cursor: pointer; font-weight: bold; color: var(--texto-suave); transition: 0.2s; }
+        .btn-talla:hover { border-color: var(--verde-principal); }
+        .btn-talla.activa { background: var(--texto-oscuro); color: var(--blanco); border-color: var(--texto-oscuro); }
+
+        .btn-comprar { background-color: var(--verde-principal); color: var(--blanco); padding: 18px; text-align: center; font-size: 1.1rem; font-weight: bold; text-decoration: none; border-radius: 5px; transition: 0.3s; display: block; border: none; cursor: pointer; }
+        .btn-comprar:hover { background-color: var(--verde-oscuro); }
+
+        .detalles-extra { margin-top: 40px; border-top: 1px solid var(--borde); padding-top: 20px; }
+        .detalles-extra ul { padding-left: 20px; color: var(--texto-suave); }
+        .detalles-extra li { margin-bottom: 10px; }
+
+        /* FOOTER SIMPLIFICADO */
+        footer { background-color: var(--fondo-gris); padding: 40px 20px; text-align: center; border-top: 1px solid var(--borde); margin-top: 60px;}
+        footer p { color: var(--texto-suave); }
+
+        @media (max-width: 768px) {
+            .contenedor-detalle { flex-direction: column; }
+            header { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">🌿 Green Fashion</a>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="#">Catálogo</a>
+            <a href="#">Nosotros</a>
+            <a href="personalizar.html" class="btn-cta-header">¿Qué te gustaría estampar?</a>
+        </nav>
+    </header>
+
+    <div class="contenedor-detalle">
+        
+        <!-- IMAGEN DEL PRODUCTO -->
+        <div class="galeria-producto">
+            <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&q=80" alt="Polo con diseño peruano">
+        </div>
+
+        <!-- INFO DEL PRODUCTO -->
+        <div class="info-producto">
+            <h1>Polo Estilo Peruano Exclusivo</h1>
+            <div class="precio">S/ 45.00</div>
+            
+            <p class="descripcion">
+                Lleva el orgullo en tu pecho con nuestra línea exclusiva de polos con diseños peruanos. Prenda fabricada con un estilo oversize holgado que garantiza frescura y máxima comodidad. Estampado en sublimación de alta resistencia que nunca pierde color, ideal para tu outfit diario urbano.
+            </p>
+
+            <div class="selector-tallas">
+                <p>Elige tu talla:</p>
+                <div class="tallas-grid">
+                    <button class="btn-talla" onclick="seleccionarTalla(this, 'S')">S</button>
+                    <button class="btn-talla activa" onclick="seleccionarTalla(this, 'M')">M</button>
+                    <button class="btn-talla" onclick="seleccionarTalla(this, 'L')">L</button>
+                    <button class="btn-talla" onclick="seleccionarTalla(this, 'XL')">XL</button>
+                </div>
+            </div>
+
+            <button class="btn-comprar" onclick="comprarPorWhatsApp()">🛒 COMPRAR POR WHATSAPP</button>
+
+            <div class="detalles-extra">
+                <h3 style="font-size: 1.2rem; margin-bottom: 15px;">Características del producto</h3>
+                <ul>
+                    <li><strong>Corte:</strong> Oversize (Holgado y moderno)</li>
+                    <li><strong>Técnica:</strong> Sublimación Tacto Cero</li>
+                    <li><strong>Género:</strong> Unisex</li>
+                    <li>No se encoge ni destiñe con las lavadas.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Green Fashion. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let tallaSeleccionada = "M";
+
+        function seleccionarTalla(boton, talla) {
+            // Quitar clase activa de todos los botones
+            let botones = document.querySelectorAll('.btn-talla');
+            botones.forEach(b => b.classList.remove('activa'));
+            
+            // Poner clase activa al botón clickeado
+            boton.classList.add('activa');
+            tallaSeleccionada = talla;
+        }
+
+        function comprarPorWhatsApp() {
+            let mensaje = `¡Hola Green Fashion! Quiero comprar un producto.\n\n📌 Detalles:\n- Producto: Polo Estilo Peruano Exclusivo\n- Talla: ${tallaSeleccionada}\n- Precio: S/ 45.00\n\n¿Cuáles son los métodos de pago y envío?`;
+            
+            let url = `https://wa.me/51927089187?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
