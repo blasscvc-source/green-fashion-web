@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseña tu Polo | Green Fashion</title>
+    <style>
+        /* --- VARIABLES GREEN FASHION --- */
+        :root {
+            --verde-principal: #2E7D32;
+            --verde-claro: #4CAF50;
+            --blanco: #FFFFFF;
+            --texto-oscuro: #333333;
+            --fondo-claro: #FAFAFA;
+            --gris-borde: #DDDDDD;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--fondo-claro); color: var(--texto-oscuro); }
+
+        /* --- HEADER --- */
+        header { background-color: var(--blanco); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: bold; color: var(--verde-principal); text-decoration: none; }
+        nav a { margin-left: 20px; text-decoration: none; color: var(--texto-oscuro); font-weight: 600; }
+        nav a:hover { color: var(--verde-principal); }
+
+        /* --- CONTENEDOR DEL DISEÑADOR --- */
+        .contenedor-disenador {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: var(--blanco);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* --- ZONA IZQUIERDA: EL POLO --- */
+        .zona-polo {
+            flex: 1;
+            min-width: 350px;
+            padding: 40px;
+            background-color: #F9F9F9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .polo-mockup {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .polo-mockup img.base {
+            width: 100%;
+            display: block;
+        }
+
+        /* Área punteada donde va el diseño */
+        .area-impresion {
+            position: absolute;
+            top: 25%;
+            left: 28%;
+            width: 44%;
+            height: 45%;
+            border: 1px dashed #999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #texto-polo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            word-break: break-word;
+            z-index: 2;
+        }
+
+        #imagen-polo {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+            z-index: 1;
+        }
+
+        /* --- ZONA DERECHA: CONTROLES --- */
+        .zona-controles {
+            flex: 1;
+            min-width: 350px;
+            padding: 30px;
+            border-left: 1px solid var(--gris-borde);
+        }
+
+        /* Pestañas (Tabs) */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--gris-borde);
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            color: #777;
+            background: #F5F5F5;
+            transition: 0.3s;
+        }
+
+        .tab.activo {
+            background: var(--verde-principal);
+            color: var(--blanco);
+        }
+
+        .contenido-tab { display: none; }
+        .contenido-tab.activo { display: block; animation: aparecer 0.3s ease; }
+
+        @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Controles Internos */
+        .control-grupo { margin-bottom: 20px; }
+        .control-grupo label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 0.9rem; }
+        
+        input[type="text"], select, input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--gris-borde);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="color"] {
+            width: 50px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Grilla de Cliparts */
+        .grid-cliparts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .clipart-btn {
+            border: 1px solid var(--gris-borde);
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 30px;
+            background: var(--blanco);
+            transition: 0.2s;
+        }
+        .clipart-btn:hover { border-color: var(--verde-principal); transform: scale(1.05); }
+
+        /* --- SECCIÓN INFERIOR: CARRITO --- */
+        .zona-compra {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--gris-borde);
+        }
+        
+        .tallas { display: flex; gap: 10px; margin-bottom: 20px; }
+        .btn-talla { 
+            padding: 10px 15px; border: 1px solid var(--gris-borde); border-radius: 5px; 
+            background: var(--blanco); cursor: pointer; font-weight: bold; transition: 0.2s;
+        }
+        .btn-talla.activa { background: var(--verde-principal); color: var(--blanco); border-color: var(--verde-principal); }
+        
+        .precio-final { font-size: 1.8rem; font-weight: bold; color: var(--verde-principal); margin-bottom: 15px; }
+
+        .btn-whatsapp {
+            display: block; width: 100%; text-align: center; background: #25D366; color: white;
+            padding: 15px; font-size: 1.2rem; font-weight: bold; text-decoration: none;
+            border-radius: 8px; transition: 0.3s; border: none; cursor: pointer;
+        }
+        .btn-whatsapp:hover { background: #1EBE55; }
+
+        @media (max-width: 768px) {
+            .contenedor-disenador { flex-direction: column; margin: 10px; }
+            .zona-controles { border-left: none; border-top: 1px solid var(--gris-borde); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">🌿 Green Fashion</a>
+        <nav>
+            <a href="index.html">Volver al Inicio</a>
+        </nav>
+    </header>
+
+    <div class="contenedor-disenador">
+        
+        <!-- ZONA IZQUIERDA: MOCKUP DEL POLO -->
+        <div class="zona-polo">
+            <div class="polo-mockup">
+                <!-- Imagen de polo blanco limpio para simular el diseño -->
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Polo en blanco" class="base">
+                
+                <div class="area-impresion">
+                    <img id="imagen-polo" src="" alt="">
+                    <div id="texto-polo"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ZONA DERECHA: HERRAMIENTAS -->
+        <div class="zona-controles">
+            
+            <!-- PESTAÑAS -->
+            <div class="tabs">
+                <div class="tab activo" onclick="cambiarTab('textos', this)">🔤 Textos</div>
+                <div class="tab" onclick="cambiarTab('logo', this)">📤 Tu Logo</div>
+                <div class="tab" onclick="cambiarTab('cliparts', this)">🎨 Cliparts</div>
+            </div>
+
+            <!-- CONTENIDO TAB: TEXTOS -->
+            <div id="tab-textos" class="contenido-tab activo">
+                <div class="control-grupo">
+                    <label>Ingresar texto:</label>
+                    <!-- Aquí capturamos lo que el usuario escribe en tiempo real -->
+                    <input type="text" id="input-texto" placeholder="Escribe aquí tu frase..." oninput="actualizarTexto()">
+                </div>
+                <div class="control-grupo">
+                    <label>Fuente (Tipo de Letra):</label>
+                    <select id="select-fuente" onchange="actualizarFuente()">
+                        <option value="'Segoe UI', sans-serif">Moderna</option>
+                        <option value="'Courier New', monospace">Máquina de Escribir</option>
+                        <option value="'Impact', sans-serif">Impacto (Gruesa)</option>
+                        <option value="'Comic Sans MS', cursive">Divertida</option>
+                    </select>
+                </div>
+                <div class="control-grupo">
+                    <label>Color del Texto:</label>
+                    <input type="color" id="color-texto" value="#000000" oninput="actualizarColor()">
+                </div>
+            </div>
+
+            <!-- CONTENIDO TAB: TU LOGO -->
+            <div id="tab-logo" class="contenido-tab">
+                <div class="control-grupo">
+                    <label>Sube tu imagen (JPG, PNG):</label>
+                    <!-- Herramienta para subir archivos locales -->
+                    <input type="file" id="input-imagen" accept="image/*" onchange="subirImagen(event)">
+                    <p style="font-size: 0.8rem; color: #777; margin-top: 10px;">Se recomienda imágenes con fondo transparente (PNG).</p>
+                </div>
+            </div>
+
+            <!-- CONTENIDO TAB: CLIPARTS -->
+            <div id="tab-cliparts" class="contenido-tab">
+                <label style="display: block; font-weight: bold; margin-bottom: 15px;">Selecciona una forma rápida:</label>
+                <div class="grid-cliparts">
+                    <!-- Usamos emojis como cliparts rápidos para el prototipo -->
+                    <button class="clipart-btn" onclick="aplicarClipart('👽')">👽</button>
+                    <button class="clipart-btn" onclick="aplicarClipart('🔥')">🔥</button>
+                    <button class="clipart-btn" onclick="aplicarClipart('🐾')">🐾</button>
+                    <button class="clipart-btn" onclick="aplicarClipart('⚽')">⚽</button>
+                    <button class="clipart-btn" onclick="aplicarClipart('🎮')">🎮</button>
+                    <button class="clipart-btn" onclick="aplicarClipart('💀')">💀</button>
+                </div>
+                <button onclick="limpiarDiseno()" style="margin-top: 20px; padding: 10px; width: 100%; border: 1px solid red; color: red; background: transparent; cursor: pointer; border-radius: 5px;">Quitar Diseño</button>
+            </div>
+
+            <!-- ZONA DE COMPRA Y WHATSAPP -->
+            <div class="zona-compra">
+                <label style="font-weight: bold; display: block; margin-bottom: 10px;">Talla:</label>
+                <div class="tallas">
+                    <button class="btn-talla" onclick="seleccionarTalla(this, 'S')">S</button>
+                    <button class="btn-talla activa" onclick="seleccionarTalla(this, 'M')">M</button>
+                    <button class="btn-talla" onclick="seleccionarTalla(this, 'L')">L</button>
+                    <button class="btn-talla" onclick="seleccionarTalla(this, 'XL')">XL</button>
+                </div>
+                
+                <div class="precio-final">S/ 45.00</div>
+                
+                <!-- Botón que envía la información recolectada -->
+                <button class="btn-whatsapp" onclick="enviarPedidoWhatsApp()">ENVIAR DISEÑO A WHATSAPP</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SCRIPT: LA LÓGICA INTERACTIVA -->
+    <script>
+        let tallaSeleccionada = "M";
+
+        // Función para cambiar entre pestañas
+        function cambiarTab(idTab, elemento) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('activo'));
+            document.querySelectorAll('.contenido-tab').forEach(c => c.classList.remove('activo'));
+            
+            elemento.classList.add('activo');
+            document.getElementById('tab-' + idTab).classList.add('activo');
+        }
+
+        // Función: Escribir en tiempo real
+        function actualizarTexto() {
+            let texto = document.getElementById('input-texto').value;
+            document.getElementById('texto-polo').innerText = texto;
+            document.getElementById('imagen-polo').style.display = 'none'; // Oculta imagen si escribe texto
+        }
+
+        // Función: Cambiar tipo de letra
+        function actualizarFuente() {
+            let fuente = document.getElementById('select-fuente').value;
+            document.getElementById('texto-polo').style.fontFamily = fuente;
+        }
+
+        // Función: Cambiar color
+        function actualizarColor() {
+            let color = document.getElementById('color-texto').value;
+            document.getElementById('texto-polo').style.color = color;
+        }
+
+        // Función: Subir imagen desde la computadora/celular
+        function subirImagen(event) {
+            let archivo = event.target.files[0];
+            if (archivo) {
+                let lector = new FileReader();
+                lector.onload = function(e) {
+                    document.getElementById('imagen-polo').src = e.target.result;
+                    document.getElementById('imagen-polo').style.display = 'block';
+                    document.getElementById('texto-polo').innerText = ''; // Oculta el texto
+                    document.getElementById('input-texto').value = '';
+                }
+                lector.readAsDataURL(archivo);
+            }
+        }
+
+        // Función: Colocar clipart rápido
+        function aplicarClipart(emoji) {
+            document.getElementById('texto-polo').innerText = emoji;
+            document.getElementById('texto-polo').style.fontSize = '80px';
+            document.getElementById('imagen-polo').style.display = 'none';
+        }
+
+        // Función: Limpiar área de diseño
+        function limpiarDiseno() {
+            document.getElementById('texto-polo').innerText = '';
+            document.getElementById('imagen-polo').style.display = 'none';
+            document.getElementById('imagen-polo').src = '';
+            document.getElementById('input-texto').value = '';
+        }
+
+        // Función: Seleccionar Talla
+        function seleccionarTalla(boton, talla) {
+            document.querySelectorAll('.btn-talla').forEach(b => b.classList.remove('activa'));
+            boton.classList.add('activa');
+            tallaSeleccionada = talla;
+        }
+
+        // Función: Enviar a WhatsApp
+        function enviarPedidoWhatsApp() {
+            let textoEscrito = document.getElementById('input-texto').value;
+            let disenoInfo = textoEscrito ? `el texto: "${textoEscrito}"` : "una imagen/clipart personalizada";
+            
+            let mensaje = `¡Hola Green Fashion! He utilizado el Diseñador Web y quiero un polo oversize.\n\n` +
+                          `📌 Detalles:\n` +
+                          `- Diseño: He colocado ${disenoInfo}.\n` +
+                          `- Talla: ${tallaSeleccionada}\n` +
+                          `- Precio estimado: S/ 45.00\n\n` +
+                          `¿Cómo les envío la imagen final para coordinar el estampado?`;
+            
+            let urlWsp = `https://wa.me/51927089187?text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWsp, '_blank');
+        }
+    </script>
+</body>
+</html>
