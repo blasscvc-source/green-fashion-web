@@ -1,1 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polos Oversize Personalizados | Green Fashion</title>
+    <style>
+        /* Paleta de colores: Verde y Blanco */
+        :root {
+            --verde-principal: #2E7D32;
+            --verde-claro: #4CAF50;
+            --blanco: #FFFFFF;
+            --texto-oscuro: #333333;
+            --fondo-claro: #FAFAFA;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--fondo-claro);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--blanco);
+            padding: 20px 50px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--verde-principal);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        /* Sección Principal del Producto */
+        .producto-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 50px;
+            background-color: var(--blanco);
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .producto-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .producto-info h1 {
+            font-size: 3rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .producto-info h1 span {
+            color: var(--verde-principal);
+        }
+
+        .producto-info p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .btn-comprar {
+            display: inline-block;
+            background-color: var(--verde-principal);
+            color: var(--blanco);
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+            box-shadow: 0 4px 6px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn-comprar:hover {
+            background-color: var(--texto-oscuro);
+        }
+
+        .producto-imagen {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .producto-imagen img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Características del Producto */
+        .caracteristicas {
+            padding: 80px 20px;
+            background-color: var(--verde-principal);
+            color: var(--blanco);
+            text-align: center;
+        }
+
+        .caracteristicas h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .grid-caracteristicas {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .item-caracteristica {
+            flex: 1;
+            min-width: 250px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .item-caracteristica h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--blanco);
+        }
+
+        /* Sección de Personalización */
+        .personalizacion {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: var(--blanco);
+        }
+
+        .personalizacion h2 {
+            font-size: 2.5rem;
+            color: var(--verde-principal);
+            margin-bottom: 20px;
+        }
+
+        .personalizacion p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            color: #555;
+        }
+
+        .opciones-diseno {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .opcion {
+            background-color: var(--fondo-claro);
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--texto-oscuro);
+            border: 2px solid var(--verde-claro);
+        }
+
+        /* Footer de Compra */
+        footer {
+            background-color: var(--texto-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 40px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Green Fashion</a>
+    </header>
+
+    <!-- Presentación del Producto -->
+    <section class="producto-hero">
+        <div class="producto-info">
+            <h1>Tú tienes la idea, nosotros la convertimos en tu <span>Polo Oversize</span></h1>
+            <p>Descubre nuestra línea de polos de estilo holgado y juvenil. Una prenda cómoda, moderna y diseñada exclusivamente para ti. Combina la moda urbana con estampados llamativos que reflejan tu verdadera identidad.</p>
+            <a href="#comprar" class="btn-comprar">Ver Catálogo en WhatsApp</a>
+        </div>
+        <div class="producto-imagen">
+            <!-- Imagen referencial del polo oversize -->
+            <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Polo Oversize Personalizado">
+        </div>
+    </section>
+
+    <!-- Características Técnicas y Visuales -->
+    <section class="caracteristicas">
+        <h2>Características de la Prenda</h2>
+        <div class="grid-caracteristicas">
+            <div class="item-caracteristica">
+                <h3>Corte Oversize</h3>
+                <p>Estilo holgado y juvenil. Una prenda que garantiza máxima comodidad y se adapta perfectamente a las tendencias de la moda urbana actual.</p>
+            </div>
+            <div class="item-caracteristica">
+                <h3>Técnica de Sublimación</h3>
+                <p>Utilizamos estampado por sublimación para lograr colores vibrantes, llamativos y de alta durabilidad que no se desgastan con el uso.</p>
+            </div>
+            <div class="item-caracteristica">
+                <h3>Prendas Unisex</h3>
+                <p>Nuestros polos ofrecen alternativas de personalización tanto para mujeres como para varones, adaptándose a cualquier estilo y preferencia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enfoque en la Personalización -->
+    <section class="personalizacion">
+        <h2>Crea un diseño 100% tuyo</h2>
+        <p>A diferencia de otras marcas con catálogos cerrados, en Green Fashion tú participas en el diseño final. Dinos qué temática te gusta y nosotros lo plasmamos en tu prenda.</p>
+        
+        <div class="opciones-diseno">
+            <div class="opcion">Tus Frases Favoritas</div>
+            <div class="opcion">Ilustraciones Únicas</div>
+            <div class="opcion">Fotografías e Imágenes</div>
+            <div class="opcion">Elementos Gráficos</div>
+            <div class="opcion">Temáticas Especiales</div>
+        </div>
+    </section>
+
+    <!-- Footer / Llamado a la acción -->
+    <footer id="comprar">
+        <h2 style="margin-bottom: 20px;">¿Listo para pedir el tuyo?</h2>
+        <p style="margin-bottom: 30px;">Consulta nuestras tallas, precios y opciones de diseño directamente con nosotros.</p>
+        <a href="#" class="btn-comprar" style="background-color: #25D366; color: white; border: none;">Pedir por WhatsApp</a>
+    </footer>
+
+</body>
+</html>
