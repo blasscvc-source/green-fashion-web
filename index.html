@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Fashion | Polos Oversize Personalizados</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Librería para los íconos (Polo, Envío, Redes, Métodos de pago, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root { --verde-principal: #2E7D32; --verde-oscuro: #1B5E20; --texto-oscuro: #333333; --texto-suave: #555555; --blanco: #FFFFFF; --fondo-gris: #F9F9F9; --borde: #E0E0E0; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -43,30 +47,181 @@
         .grid-pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
         .paso-icono { font-size: 40px; margin-bottom: 15px; }
 
-        /* Estilos del Footer Completo */
-        .footer-completo { background-color: var(--fondo-gris); color: var(--texto-oscuro); padding: 60px 40px 20px; border-top: 1px solid var(--borde); margin-top: 80px; }
-        .footer-columnas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
-        .footer-col { flex: 1; min-width: 220px; }
-        .footer-col h3 { font-size: 1.3rem; margin-bottom: 20px; font-family: 'Lora', serif; color: var(--texto-oscuro); }
-        .footer-col p, .footer-col a { color: var(--texto-suave); text-decoration: none; display: block; margin-bottom: 12px; font-size: 0.95rem; }
-        .footer-col a:hover { color: var(--verde-principal); }
-        .footer-col ul { list-style: none; padding: 0; }
-        .footer-col ul li::before { content: "• "; color: var(--verde-principal); font-weight: bold; }
-        
-        .redes-sociales { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-red { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
-        .btn-fb { background-color: #3b5998; }
-        .btn-yt { background-color: #ff0000; }
+        /* ESTILOS DE LA BARRA NEGRA DE BENEFICIOS */
+        .barra-beneficios {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 20px;
+            flex-wrap: wrap;
+        }
+        .beneficio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 30px;
+            border-right: 1px solid #444444;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+        .beneficio-item:last-child {
+            border-right: none;
+        }
+        .beneficio-item i {
+            font-size: 1.2rem;
+        }
 
-        .footer-inferior { text-align: center; padding-top: 30px; border-top: 1px solid var(--borde); max-width: 1200px; margin: 0 auto; }
-        .iconos-pagos { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; color: #555; font-size: 0.9rem; font-weight: 600;}
-        .badge-pago { background: #fff; border: 1px solid var(--borde); padding: 5px 12px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        
-        .enlaces-legales { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
-        .enlaces-legales a { color: var(--texto-suave); text-decoration: none; font-size: 0.9rem; }
-        .enlaces-legales a:hover { color: var(--verde-principal); }
+        /* ESTILOS DEL FOOTER MEJORADO */
+        footer {
+            background-color: #f4f4f6;
+            padding: 50px 20px 30px;
+            border-top: 1px solid var(--borde);
+            text-align: left;
+        }
+        .footer-contenido {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #2b2b2b;
+        }
+        .footer-col p {
+            color: var(--texto-suave);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .footer-col ul li a:hover {
+            color: var(--verde-principal);
+        }
+        .footer-col.categorias-list ul {
+            list-style-type: disc;
+            padding-left: 18px;
+        }
+        .footer-col.categorias-list ul li::marker {
+            color: #4a5568;
+        }
 
-        @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } .grid-pasos { grid-template-columns: 1fr 1fr; } .prendas-personalizables { flex-direction: column; text-align: center;} }
+        /* REDES SOCIALES */
+        .redes-sociales {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .redes-sociales a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: opacity 0.2s;
+        }
+        .redes-sociales a:hover { opacity: 0.85; }
+        .btn-facebook { background-color: #3b5998; }
+        .btn-tiktok { background-color: #000000; } /* Actualizado a TikTok */
+
+        /* CONTACTO ICONOS */
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: #2d3748;
+            font-size: 0.95rem;
+            text-decoration: none; /* Asegura que el enlace no tenga subrayado */
+            transition: color 0.2s;
+        }
+        .contacto-item:hover {
+            color: var(--verde-principal);
+        }
+        .contacto-item i {
+            font-size: 1.1rem;
+            color: inherit;
+        }
+
+        /* MÉTODOS DE PAGO Y ENLACES LEGALES */
+        .footer-inferior {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .metodos-pago {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .metodos-pago i {
+            font-size: 2.2rem;
+            color: #4a5568;
+        }
+        .deposito-bancario {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-left: 10px;
+        }
+        .deposito-bancario i {
+            font-size: 1.6rem;
+        }
+        .enlaces-legales {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .enlaces-legales a {
+            color: #1a202c;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .enlaces-legales a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) { 
+            header { flex-direction: column; gap: 15px; } 
+            .grid-pasos { grid-template-columns: 1fr 1fr; } 
+            .prendas-personalizables { flex-direction: column; text-align: center;} 
+            .barra-beneficios { flex-direction: column; gap: 12px; }
+            .beneficio-item { border-right: none; border-bottom: 1px solid #333; padding-bottom: 10px; width: 100%; justify-content: center; }
+            .beneficio-item:last-child { border-bottom: none; }
+        }
     </style>
 </head>
 <body>
@@ -91,8 +246,6 @@
         <div class="linea-separador"></div>
         
         <div class="grid-categorias">
-            
-            <!-- AQUÍ ESTÁ EL CAMBIO A TU IMAGEN REAL -->
             <a href="catalogo.html#peruanos" class="tarjeta-cat">
                 <img src="diseño peruano.png" alt="Diseños peruanos">
                 <h3>Polos con diseños peruanos</h3>
@@ -112,7 +265,6 @@
                 <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80" alt="Personalizar">
                 <h3>Personalizar tu Polo</h3>
             </a>
-
         </div>
     </section>
 
@@ -135,66 +287,90 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA COMPLETO CORPORATIVO -->
-    <footer class="footer-completo">
-        <div class="footer-columnas">
-            
-            <!-- Columna 1 -->
+    <!-- BARRA NEGRA DE BENEFICIOS -->
+    <div class="barra-beneficios">
+        <div class="beneficio-item">
+            <i class="fa-solid fa-shirt"></i>
+            <span>Desde una unidad</span>
+        </div>
+        <div class="beneficio-item">
+            <i class="fa-solid fa-truck"></i>
+            <span>Envío gratis desde 5 productos</span>
+        </div>
+        <div class="beneficio-item">
+            <i class="fa-regular fa-pen-to-square"></i>
+            <span>100% personalizado</span>
+        </div>
+        <div class="beneficio-item">
+            <i class="fa-regular fa-credit-card"></i>
+            <span>Pago seguro Online</span>
+        </div>
+    </div>
+
+    <!-- FOOTER MEJORADO -->
+    <footer>
+        <div class="footer-contenido">
             <div class="footer-col">
                 <h3>Polos Personalizados</h3>
                 <p>Vendemos polos estampados personalizados de varios colores</p>
                 <div class="redes-sociales">
-                    <a href="#" class="btn-red btn-fb">f</a>
-                    <a href="#" class="btn-red btn-yt">▶</a>
+                    <!-- ENLACE DE FACEBOOK -->
+                    <a href="https://www.facebook.com/profile.php?id=61593180631961" target="_blank" class="btn-facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <!-- ENLACE DE TIKTOK -->
+                    <a href="https://www.tiktok.com/@green.fashion06?_r=1&_t=ZS-98pHxUI0q2f" target="_blank" class="btn-tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
 
-            <!-- Columna 2 -->
             <div class="footer-col">
                 <h3>Información</h3>
-                <a href="#">Nosotros</a>
-                <a href="#">Blog</a>
-                <a href="#">Contáctenos</a>
-            </div>
-
-            <!-- Columna 3 -->
-            <div class="footer-col">
-                <h3>Categorías</h3>
                 <ul>
-                    <li><a href="#" style="display:inline;">Hombre</a></li>
-                    <li><a href="#" style="display:inline;">Mujer</a></li>
-                    <li><a href="#" style="display:inline;">Polos Personalizados</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contáctenos</a></li>
                 </ul>
             </div>
 
-            <!-- Columna 4 -->
-            <div class="footer-col">
-                <h3>Contáctanos</h3>
-                <p>📞 +51928896153</p>
-                <p>✉️ ventas@polos-personalizados.com</p>
+            <div class="footer-col categorias-list">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="#">Hombre</a></li>
+                    <li><a href="#">Mujer</a></li>
+                    <li><a href="#">Polos Personalizados</a></li>
+                </ul>
             </div>
 
+            <div class="footer-col">
+                <h3>Contáctanos</h3>
+                <!-- ENLACE DE WHATSAPP -->
+                <a href="https://wa.me/51927089187" target="_blank" class="contacto-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>+51 927 089 187</span>
+                </a>
+                <div class="contacto-item">
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>ventas@polos-personalizados.com</span>
+                </div>
+            </div>
         </div>
 
         <div class="footer-inferior">
-            <div class="iconos-pagos">
-                <span class="badge-pago">VISA</span>
-                <span class="badge-pago">Mastercard</span>
-                <span class="badge-pago">AMEX</span>
-                <span class="badge-pago">DINERS</span>
-                <span class="badge-pago">🏢 Depósito Bancario</span>
+            <div class="metodos-pago">
+                <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                <i class="fa-brands fa-cc-amex" title="American Express"></i>
+                <i class="fa-brands fa-cc-diners-club" title="Diners Club"></i>
+                <div class="deposito-bancario">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>Depósito Bancario</span>
+                </div>
             </div>
-            
             <div class="enlaces-legales">
                 <a href="#">Términos y Condiciones</a>
-                <span>|</span>
                 <a href="#">Políticas de Privacidad</a>
-                <span>|</span>
                 <a href="#">Libro de Reclamaciones</a>
             </div>
-            
-            <p style="color: #777; font-size: 0.85rem; margin-top: 15px;">&copy; 2026 Green Fashion. Todos los derechos reservados.</p>
         </div>
     </footer>
+
 </body>
 </html>
