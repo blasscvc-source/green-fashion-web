@@ -43,7 +43,29 @@
         .grid-pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
         .paso-icono { font-size: 40px; margin-bottom: 15px; }
 
-        footer { background-color: var(--fondo-gris); padding: 40px 20px; text-align: center; border-top: 1px solid var(--borde);}
+        /* Estilos del Footer Completo */
+        .footer-completo { background-color: var(--fondo-gris); color: var(--texto-oscuro); padding: 60px 40px 20px; border-top: 1px solid var(--borde); margin-top: 80px; }
+        .footer-columnas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
+        .footer-col { flex: 1; min-width: 220px; }
+        .footer-col h3 { font-size: 1.3rem; margin-bottom: 20px; font-family: 'Lora', serif; color: var(--texto-oscuro); }
+        .footer-col p, .footer-col a { color: var(--texto-suave); text-decoration: none; display: block; margin-bottom: 12px; font-size: 0.95rem; }
+        .footer-col a:hover { color: var(--verde-principal); }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li::before { content: "• "; color: var(--verde-principal); font-weight: bold; }
+        
+        .redes-sociales { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-red { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        .btn-fb { background-color: #3b5998; }
+        .btn-yt { background-color: #ff0000; }
+
+        .footer-inferior { text-align: center; padding-top: 30px; border-top: 1px solid var(--borde); max-width: 1200px; margin: 0 auto; }
+        .iconos-pagos { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; color: #555; font-size: 0.9rem; font-weight: 600;}
+        .badge-pago { background: #fff; border: 1px solid var(--borde); padding: 5px 12px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        
+        .enlaces-legales { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
+        .enlaces-legales a { color: var(--texto-suave); text-decoration: none; font-size: 0.9rem; }
+        .enlaces-legales a:hover { color: var(--verde-principal); }
+
         @media (max-width: 768px) { header { flex-direction: column; gap: 15px; } .grid-pasos { grid-template-columns: 1fr 1fr; } .prendas-personalizables { flex-direction: column; text-align: center;} }
     </style>
 </head>
@@ -113,8 +135,66 @@
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Green Fashion. Todos los derechos reservados.</p>
+    <!-- PIE DE PÁGINA COMPLETO CORPORATIVO -->
+    <footer class="footer-completo">
+        <div class="footer-columnas">
+            
+            <!-- Columna 1 -->
+            <div class="footer-col">
+                <h3>Polos Personalizados</h3>
+                <p>Vendemos polos estampados personalizados de varios colores</p>
+                <div class="redes-sociales">
+                    <a href="#" class="btn-red btn-fb">f</a>
+                    <a href="#" class="btn-red btn-yt">▶</a>
+                </div>
+            </div>
+
+            <!-- Columna 2 -->
+            <div class="footer-col">
+                <h3>Información</h3>
+                <a href="#">Nosotros</a>
+                <a href="#">Blog</a>
+                <a href="#">Contáctenos</a>
+            </div>
+
+            <!-- Columna 3 -->
+            <div class="footer-col">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="#" style="display:inline;">Hombre</a></li>
+                    <li><a href="#" style="display:inline;">Mujer</a></li>
+                    <li><a href="#" style="display:inline;">Polos Personalizados</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 4 -->
+            <div class="footer-col">
+                <h3>Contáctanos</h3>
+                <p>📞 +51928896153</p>
+                <p>✉️ ventas@polos-personalizados.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-inferior">
+            <div class="iconos-pagos">
+                <span class="badge-pago">VISA</span>
+                <span class="badge-pago">Mastercard</span>
+                <span class="badge-pago">AMEX</span>
+                <span class="badge-pago">DINERS</span>
+                <span class="badge-pago">🏢 Depósito Bancario</span>
+            </div>
+            
+            <div class="enlaces-legales">
+                <a href="#">Términos y Condiciones</a>
+                <span>|</span>
+                <a href="#">Políticas de Privacidad</a>
+                <span>|</span>
+                <a href="#">Libro de Reclamaciones</a>
+            </div>
+            
+            <p style="color: #777; font-size: 0.85rem; margin-top: 15px;">&copy; 2026 Green Fashion. Todos los derechos reservados.</p>
+        </div>
     </footer>
 </body>
 </html>
