@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Green Fashion</title>
+    <style>
+        /* --- VARIABLES PARA MANTENER TU DISEÑO --- */
+        :root {
+            --verde-principal: #2E7D32;
+            --verde-claro: #4CAF50;
+            --blanco: #FFFFFF;
+            --texto-oscuro: #333333;
+            --fondo-claro: #FAFAFA;
+            --gris-borde: #DDDDDD;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--fondo-claro); color: var(--texto-oscuro); }
+
+        /* --- HEADER IGUAL AL DE TU PÁGINA PRINCIPAL --- */
+        header { background-color: var(--blanco); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: bold; color: var(--verde-principal); text-decoration: none; display: flex; align-items: center; gap: 8px;}
+        nav a { margin-left: 20px; text-decoration: none; color: var(--texto-oscuro); font-weight: 600; transition: color 0.3s;}
+        nav a:hover { color: var(--verde-principal); }
+        /* Resaltar la página actual en verde */
+        nav a.activo { color: var(--verde-principal); } 
+
+        /* --- ESTILOS DE LA PÁGINA NOSOTROS --- */
+        .contenedor-nosotros {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: var(--blanco);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--gris-borde);
+        }
+
+        .titulo-principal {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--verde-principal);
+            margin-bottom: 40px;
+        }
+
+        .bloque-info {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--gris-borde);
+        }
+        
+        /* Quitar borde al último bloque */
+        .bloque-info:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .bloque-info h2 {
+            color: var(--verde-claro);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bloque-info p {
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .lista-valores {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .lista-valores li {
+            background-color: var(--fondo-claro);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            color: #555;
+            border-left: 4px solid var(--verde-claro);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .contenedor-nosotros { margin: 20px; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <header>
+        <a href="index.html" class="logo">🌿 Green Fashion</a>
+        <nav>
+            <!-- El enlace de inicio te devuelve a tu diseñador -->
+            <a href="index.html">Inicio</a>
+            <a href="#">Catálogo</a>
+            <a href="nosotros.html" class="activo">Nosotros</a>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="contenedor-nosotros">
+        <h1 class="titulo-principal">Sobre Green Fashion</h1>
+
+        <div class="bloque-info">
+            <h2>🎯 Nuestra Misión</h2>
+            <p>Brindar a nuestros clientes prendas de la más alta calidad, permitiéndoles expresar su identidad y estilo único a través de diseños personalizados y técnicas de estampado duraderas. Queremos ser el lienzo donde tu creatividad toma forma.</p>
+        </div>
+
+        <div class="bloque-info">
+            <h2>👁️ Nuestra Visión</h2>
+            <p>Ser la marca líder de moda urbana personalizada en Huancavelica y todo el Perú, reconocida por nuestra constante innovación, la calidad inigualable de nuestra tela y un compromiso absoluto con la satisfacción total de cada cliente.</p>
+        </div>
+
+        <div class="bloque-info">
+            <h2>⭐ Nuestros Valores</h2>
+            <ul class="lista-valores">
+                <li><strong>Calidad:</strong> Usamos los mejores materiales del mercado para asegurar que cada polo sea cómodo, fresco y duradero en el tiempo.</li>
+                <li><strong>Originalidad:</strong> Fomentamos la creatividad de cada persona, dándoles las herramientas web necesarias para crear prendas que los representen de verdad.</li>
+                <li><strong>Compromiso:</strong> Creemos en las entregas puntuales, en brindar una atención de primera y en mantener total transparencia en nuestros procesos con los clientes.</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
